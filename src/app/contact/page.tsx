@@ -205,6 +205,7 @@ export default function ContactPage() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="absolute inset-0"
+                  title="Interactive map showing Tillet & Saunders location in Westminster, London"
                 ></iframe>
               </div>
             </motion.div>
@@ -460,9 +461,9 @@ export default function ContactPage() {
                 viewport={{ once: true }}
                 className="p-6 bg-[var(--color-cream)]"
               >
-                <h4 className="font-display text-lg mb-3 text-[var(--color-charcoal)]">
+                <h3 className="font-display text-lg mb-3 text-[var(--color-charcoal)]">
                   {faq.question}
-                </h4>
+                </h3>
                 <p className="text-[var(--color-gray-warm)]">{faq.answer}</p>
               </motion.div>
             ))}

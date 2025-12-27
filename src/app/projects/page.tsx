@@ -274,9 +274,9 @@ export default function ProjectsPage() {
                       </span>
                     </div>
                   </div>
-                  <h3 className="text-xl mb-2 group-hover:text-[var(--color-burgundy)] transition-colors">
+                  <h2 className="text-xl mb-2 group-hover:text-[var(--color-burgundy)] transition-colors">
                     {project.title}
-                  </h3>
+                  </h2>
                   <div className="flex items-center gap-2 text-[var(--color-gray-warm)] text-sm">
                     <MapPin size={14} />
                     <span>{project.location}</span>
@@ -377,11 +377,11 @@ export default function ProjectsPage() {
                 
                 <div className="grid md:grid-cols-2 gap-8 mb-8">
                   <div>
-                    <h4 className="font-display text-lg mb-2">Project Scope</h4>
+                    <h3 className="font-display text-lg mb-2">Project Scope</h3>
                     <p className="text-[var(--color-gray-warm)]">{selectedProject.scope}</p>
                   </div>
                   <div>
-                    <h4 className="font-display text-lg mb-2">Duration</h4>
+                    <h3 className="font-display text-lg mb-2">Duration</h3>
                     <p className="text-[var(--color-gray-warm)]">{selectedProject.duration}</p>
                   </div>
                 </div>

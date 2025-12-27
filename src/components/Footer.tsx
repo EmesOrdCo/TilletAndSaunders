@@ -111,7 +111,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-lg text-white mb-6">Quick Links</h4>
+            <h2 className="font-display text-lg text-white mb-6">Quick Links</h2>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -128,7 +128,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-display text-lg text-white mb-6">Our Services</h4>
+            <h2 className="font-display text-lg text-white mb-6">Our Services</h2>
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
@@ -145,7 +145,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-display text-lg text-white mb-6">Contact Us</h4>
+            <h2 className="font-display text-lg text-white mb-6">Contact Us</h2>
             <ul className="space-y-4">
               <li>
                 <a

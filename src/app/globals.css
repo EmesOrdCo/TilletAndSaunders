@@ -271,6 +271,18 @@ a {
   background-clip: text;
 }
 
+/* Respect user's motion preferences - WCAG 2.3.3 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Animations */
 @keyframes fadeInUp {
   from {
@@ -311,10 +323,42 @@ a {
   animation: fadeIn 0.6s var(--transition-smooth) forwards;
 }
 
-/* Focus styles */
+/* Focus styles - WCAG 2.2 AA compliant (minimum 2px, recommended 3px) */
 :focus-visible {
-  outline: 2px solid var(--color-burgundy);
-  outline-offset: 4px;
+  outline: 3px solid var(--color-burgundy);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Ensure focus is not obscured - WCAG 2.4.11 */
+:focus-visible {
+  position: relative;
+  z-index: 1;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.sr-only:active {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
 
 /* Form elements */
@@ -323,11 +367,332 @@ input, textarea, select {
 }
 
 input:focus, textarea:focus, select:focus {
-  outline: none;
+  outline: 3px solid var(--color-burgundy);
+  outline-offset: 2px;
   border-color: var(--color-burgundy);
+}
+
+/* Ensure form inputs meet minimum target size (24x24px) - WCAG 2.5.8 */
+input, textarea, select, button {
+  min-height: 44px; /* Ensures touch target is at least 44x44px (iOS recommendation, exceeds 24px minimum) */
+}
+
+/* Buttons should meet minimum target size */
+button, .btn-primary, .btn-secondary {
+  min-height: 44px;
+  min-width: 44px;
 }
 
 /* Font display class */
 .font-display {
   font-family: var(--font-display);
+}
+
+/* Accessibility Features - WCAG 2.2 AA Compliant */
+
+/* High Contrast Mode - WCAG 2.2 AA Compliant */
+.high-contrast {
+  --color-burgundy: #000000;
+  --color-burgundy-dark: #000000;
+  --color-burgundy-light: #000000;
+  --color-charcoal: #000000;
+  --color-gray-warm: #000000;
+  --color-gray-medium: #000000;
+  --color-gray-light: #000000;
+  --color-off-white: #FFFFFF;
+  --color-cream: #FFFFFF;
+  --color-white: #FFFFFF;
+  --color-gold: #000000;
+  --color-gold-light: #000000;
+}
+
+/* Base background and text */
+.high-contrast,
+.high-contrast html,
+.high-contrast body {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+/* Text elements */
+.high-contrast p,
+.high-contrast span,
+.high-contrast div,
+.high-contrast li,
+.high-contrast td,
+.high-contrast th,
+.high-contrast label {
+  color: #000000 !important;
+  background-color: transparent !important;
+}
+
+/* Headings */
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast h3,
+.high-contrast h4,
+.high-contrast h5,
+.high-contrast h6 {
+  color: #000000 !important;
+  background-color: transparent !important;
+}
+
+/* Links */
+.high-contrast a {
+  color: #000000 !important;
+  background-color: transparent !important;
+  text-decoration: underline !important;
+  border: 2px solid #000000 !important;
+  padding: 2px 4px !important;
+}
+
+.high-contrast a:hover,
+.high-contrast a:focus {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+/* Buttons */
+.high-contrast button,
+.high-contrast [role="button"],
+.high-contrast .btn-primary,
+.high-contrast .btn-secondary {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border: 3px solid #000000 !important;
+  text-decoration: underline !important;
+  padding: 0.75rem 1.5rem !important;
+}
+
+.high-contrast button:hover,
+.high-contrast button:focus,
+.high-contrast [role="button"]:hover,
+.high-contrast [role="button"]:focus,
+.high-contrast .btn-primary:hover,
+.high-contrast .btn-primary:focus,
+.high-contrast .btn-secondary:hover,
+.high-contrast .btn-secondary:focus {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #000000 !important;
+}
+
+/* Form elements */
+.high-contrast input,
+.high-contrast textarea,
+.high-contrast select {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+
+.high-contrast input:focus,
+.high-contrast textarea:focus,
+.high-contrast select:focus {
+  outline: 3px solid #000000 !important;
+  outline-offset: 2px !important;
+  border-color: #000000 !important;
+}
+
+/* Sections and containers */
+.high-contrast .section,
+.high-contrast .section-dark,
+.high-contrast .section-burgundy,
+.high-contrast .container {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+/* Cards and boxes */
+.high-contrast [class*="card"],
+.high-contrast [class*="box"] {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+
+/* Borders and dividers */
+.high-contrast .divider,
+.high-contrast hr {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+/* Focus indicators */
+.high-contrast *:focus {
+  outline: 3px solid #000000 !important;
+  outline-offset: 2px !important;
+}
+
+/* Images - maintain visibility */
+.high-contrast img {
+  opacity: 1 !important;
+  filter: contrast(1.2) !important;
+}
+
+/* Remove gradients and overlays */
+.high-contrast .gradient-overlay,
+.high-contrast .text-gradient {
+  background: transparent !important;
+  -webkit-text-fill-color: #000000 !important;
+  color: #000000 !important;
+}
+
+/* Dark Mode */
+.dark-mode {
+  --color-burgundy: #FF6B9D;
+  --color-burgundy-dark: #FF4D7A;
+  --color-burgundy-light: #FF8AB0;
+  --color-charcoal: #E0E0E0;
+  --color-gray-warm: #C0C0C0;
+  --color-gray-medium: #A0A0A0;
+  --color-gray-light: #808080;
+  --color-off-white: #1A1A1A;
+  --color-cream: #2D2D2D;
+  --color-white: #FFFFFF;
+  --color-gold: #FFD700;
+  --color-gold-light: #FFE44D;
+  background-color: #1A1A1A !important;
+  color: #E0E0E0 !important;
+}
+
+.dark-mode body {
+  background-color: #1A1A1A !important;
+  color: #E0E0E0 !important;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6 {
+  color: #FFFFFF !important;
+}
+
+.dark-mode a {
+  color: #FF6B9D !important;
+}
+
+.dark-mode a:hover {
+  color: #FF8AB0 !important;
+}
+
+.dark-mode button,
+.dark-mode .btn-primary {
+  background-color: #FF6B9D !important;
+  color: #FFFFFF !important;
+}
+
+.dark-mode button:hover,
+.dark-mode .btn-primary:hover {
+  background-color: #FF4D7A !important;
+}
+
+/* Highlight Links */
+.highlight-links a {
+  background-color: #FFFF00 !important;
+  color: #000000 !important;
+  padding: 2px 4px !important;
+  border-radius: 2px !important;
+  text-decoration: underline !important;
+  font-weight: 600 !important;
+}
+
+.highlight-links a:focus {
+  outline: 3px solid #000000 !important;
+  outline-offset: 2px !important;
+}
+
+/* Increased Text Spacing - WCAG 2.4.12 */
+.increased-text-spacing * {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+  line-height: 1.8 !important;
+  paragraph-spacing: 2em !important;
+}
+
+.increased-text-spacing p,
+.increased-text-spacing li,
+.increased-text-spacing div {
+  margin-bottom: 2em !important;
+}
+
+/* Hide Focus Indicators (when disabled) */
+.hide-focus *:focus,
+.hide-focus *:focus-visible {
+  outline: none !important;
+}
+
+.hide-focus *:focus-visible {
+  outline: 3px solid transparent !important;
+}
+
+/* Ensure accessibility widget is always accessible */
+#accessibility-toggle,
+#accessibility-panel {
+  position: fixed;
+  z-index: 9999;
+}
+
+/* Force padding on accessibility panel content */
+#accessibility-panel > div:last-child {
+  padding-left: 3rem !important;
+  padding-right: 3rem !important;
+}
+
+#accessibility-panel > div:first-child {
+  padding-left: 3rem !important;
+  padding-right: 3rem !important;
+}
+
+/* Force left padding on contrast mode buttons */
+#accessibility-panel button[aria-pressed="true"],
+#accessibility-panel button[aria-pressed="false"] {
+  padding-left: 1.5rem !important;
+}
+
+/* Increase space between font size section and top bar */
+#accessibility-panel .font-size-section {
+  margin-top: 2rem !important;
+}
+
+/* Increase gap below Accessibility Options title */
+#accessibility-panel .accessibility-header {
+  padding-bottom: 2rem !important;
+}
+
+/* Make toggle switch background height match circle, width for horizontal sliding */
+#accessibility-panel .toggle-switch {
+  height: 1.25rem !important; /* 20px - matches circle diameter exactly */
+  width: 2.5rem !important; /* 40px - wide enough for horizontal sliding */
+  min-height: 1.25rem !important;
+  min-width: 2.5rem !important;
+}
+
+/* Keyboard shortcut styling */
+kbd {
+  font-family: monospace;
+  font-size: 0.85em;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  background-color: var(--color-cream);
+  border: 1px solid var(--color-gray-light);
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments for accessibility widget */
+@media (max-width: 640px) {
+  #accessibility-panel {
+    width: calc(100vw - 2rem) !important;
+    right: 1rem !important;
+    bottom: 6rem !important;
+    max-height: calc(100vh - 8rem) !important;
+  }
+  
+  #accessibility-toggle {
+    bottom: 1.5rem !important;
+    right: 1.5rem !important;
+  }
 }

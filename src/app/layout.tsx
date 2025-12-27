@@ -3,6 +3,7 @@ import { Playfair_Display, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -30,9 +31,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${instrumentSans.variable}`}>
       <body>
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[var(--color-burgundy)] focus:text-white focus:rounded focus:font-semibold focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
         <Header />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
         <Footer />
+        <AccessibilityWidget />
       </body>
     </html>
   );

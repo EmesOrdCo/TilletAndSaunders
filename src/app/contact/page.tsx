@@ -223,8 +223,11 @@ export default function ContactPage() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center py-12"
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true"
                   >
-                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6" aria-hidden="true">
                       <CheckCircle className="text-green-600" size={40} />
                     </div>
                     <h3 className="text-2xl mb-4">Thank You!</h3>
@@ -256,7 +259,8 @@ export default function ContactPage() {
                       Fill in the form below and we&apos;ll get back to you as soon as possible.
                     </p>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6" noValidate aria-label="Contact form">
+                      <div role="status" aria-live="polite" aria-atomic="true" className="sr-only" id="form-status"></div>
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <label
@@ -272,9 +276,12 @@ export default function ContactPage() {
                             value={formData.name}
                             onChange={handleChange}
                             required
+                            aria-required="true"
+                            aria-describedby="name-error"
                             className="w-full px-4 py-3 border border-[var(--color-gray-light)] bg-[var(--color-cream)] focus:border-[var(--color-burgundy)] transition-colors"
                             placeholder="John Smith"
                           />
+                          <span id="name-error" className="sr-only" role="alert"></span>
                         </div>
                         <div>
                           <label
@@ -290,9 +297,12 @@ export default function ContactPage() {
                             value={formData.email}
                             onChange={handleChange}
                             required
+                            aria-required="true"
+                            aria-describedby="email-error"
                             className="w-full px-4 py-3 border border-[var(--color-gray-light)] bg-[var(--color-cream)] focus:border-[var(--color-burgundy)] transition-colors"
                             placeholder="john@example.com"
                           />
+                          <span id="email-error" className="sr-only" role="alert"></span>
                         </div>
                       </div>
 
@@ -327,6 +337,8 @@ export default function ContactPage() {
                             value={formData.service}
                             onChange={handleChange}
                             required
+                            aria-required="true"
+                            aria-describedby="service-error"
                             className="w-full px-4 py-3 border border-[var(--color-gray-light)] bg-[var(--color-cream)] focus:border-[var(--color-burgundy)] transition-colors"
                           >
                             <option value="">Select a service</option>
@@ -336,6 +348,7 @@ export default function ContactPage() {
                               </option>
                             ))}
                           </select>
+                          <span id="service-error" className="sr-only" role="alert"></span>
                         </div>
                       </div>
 

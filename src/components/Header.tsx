@@ -35,7 +35,7 @@ export default function Header() {
   return (
     <>
       {/* Fixed Header Container */}
-      <header className="fixed top-0 w-full z-50">
+      <header className="fixed top-0 w-full z-50" role="banner">
         {/* Top Bar - Hidden when scrolled */}
         <div 
           className={`hidden lg:block bg-[var(--color-charcoal)] text-[var(--color-off-white)] transition-all duration-300 overflow-hidden ${
@@ -44,12 +44,12 @@ export default function Header() {
         >
           <div className="container flex justify-between items-center text-sm">
             <div className="flex items-center gap-8">
-              <a href="tel:+441234567890" className="flex items-center gap-2 hover:text-[var(--color-gold)] transition-colors">
-                <Phone size={14} />
+              <a href="tel:+441234567890" className="flex items-center gap-2 hover:text-[var(--color-gold)] transition-colors" aria-label="Call us at 01234 567 890">
+                <Phone size={14} aria-hidden="true" />
                 <span>01234 567 890</span>
               </a>
-              <a href="mailto:info@tilletandsaunders.co.uk" className="flex items-center gap-2 hover:text-[var(--color-gold)] transition-colors">
-                <Mail size={14} />
+              <a href="mailto:info@tilletandsaunders.co.uk" className="flex items-center gap-2 hover:text-[var(--color-gold)] transition-colors" aria-label="Email us at info@tilletandsaunders.co.uk">
+                <Mail size={14} aria-hidden="true" />
                 <span>info@tilletandsaunders.co.uk</span>
               </a>
             </div>
@@ -98,7 +98,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8" role="navigation" aria-label="Main navigation">
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.href}
@@ -139,12 +139,14 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden relative z-10 p-2 transition-colors duration-300 ${
+            className={`lg:hidden relative z-10 p-2 transition-colors duration-300 min-w-[44px] min-h-[44px] ${
               isScrolled || isMobileMenuOpen
                 ? 'text-[var(--color-charcoal)]'
                 : 'text-white'
             }`}
-            aria-label="Toggle menu"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -172,9 +174,13 @@ export default function Header() {
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="absolute right-0 top-0 h-full w-[80%] max-w-sm bg-white shadow-2xl"
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile menu"
             >
               <div className="flex flex-col h-full pt-24 px-8">
-                <nav className="flex flex-col gap-6">
+                <nav className="flex flex-col gap-6" role="navigation" aria-label="Mobile navigation">
                   {navLinks.map((link, index) => (
                     <motion.div
                       key={link.href}

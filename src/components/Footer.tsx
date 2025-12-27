@@ -10,7 +10,6 @@ import {
   Facebook, 
   Instagram, 
   Linkedin,
-  ArrowUp,
   Award,
   Shield,
   CheckCircle
@@ -40,35 +39,10 @@ const accreditations = [
 ];
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="bg-[var(--color-charcoal)] text-[var(--color-off-white)]" role="contentinfo">
-      {/* Accreditations Bar */}
-      <div className="border-b border-white/10">
-        <div className="container py-10">
-          <div className="flex flex-wrap justify-center gap-10 md:gap-20">
-            {accreditations.map((item, index) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-3 text-[var(--color-gray-light)]"
-              >
-                <item.icon size={24} className="text-[var(--color-gold)]" />
-                <span className="text-sm font-medium">{item.label}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
-      <div className="container py-20 md:py-28">
+      <div className="container py-20 md:py-28 footer-main-section">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
@@ -80,11 +54,7 @@ export default function Footer() {
                 Building Excellence
               </span>
             </Link>
-            <p className="text-[var(--color-gray-light)] mb-6 leading-relaxed">
-              With over 25 years of experience, we deliver exceptional craftsmanship 
-              and uncompromising quality on every project.
-            </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-6">
               <a
                 href="#"
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--color-burgundy)] transition-colors duration-300"
@@ -107,11 +77,27 @@ export default function Footer() {
                 <Linkedin size={18} />
               </a>
             </div>
+            {/* Accreditations */}
+            <div className="flex flex-col gap-3">
+              {accreditations.map((item, index) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-3 text-[var(--color-gray-light)]"
+                >
+                  <item.icon size={20} className="text-[var(--color-gold)] flex-shrink-0" />
+                  <span className="text-sm font-medium">{item.label}</span>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h2 className="font-display text-lg text-white mb-6">Quick Links</h2>
+            <h2 className="font-display text-white mb-6 footer-section-title">Quick Links</h2>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -128,7 +114,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h2 className="font-display text-lg text-white mb-6">Our Services</h2>
+            <h2 className="font-display text-white mb-6 footer-section-title">Our Services</h2>
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
@@ -145,7 +131,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h2 className="font-display text-lg text-white mb-6">Contact Us</h2>
+            <h2 className="font-display text-white mb-6 footer-section-title">Contact Us</h2>
             <ul className="space-y-4">
               <li>
                 <a
@@ -202,13 +188,6 @@ export default function Footer() {
                 Cookie Policy
               </Link>
             </div>
-            <button
-              onClick={scrollToTop}
-              className="w-10 h-10 rounded-full bg-[var(--color-burgundy)] flex items-center justify-center hover:bg-[var(--color-burgundy-light)] transition-colors duration-300"
-              aria-label="Scroll to top"
-            >
-              <ArrowUp size={18} />
-            </button>
           </div>
         </div>
       </div>

@@ -232,12 +232,12 @@ export default function HomePage() {
                 exceptional craftsmanship across London and the South East. Our team of 
                 skilled tradesmen brings decades of combined experience to every project.
               </p>
-              <p className="text-[var(--color-gray-warm)] mb-8 leading-relaxed">
+              <p className="text-[var(--color-gray-warm)] leading-relaxed about-section-paragraph">
                 We believe that every home deserves the finest quality workmanship. From 
                 initial consultation to final handover, we maintain the highest standards 
                 of professionalism and communication.
               </p>
-              <div className="space-y-4 mb-8">
+              <div className="space-y-4 about-section-bullets">
                 {[
                   'Federation of Master Builders Member',
                   'TrustMark Registered',
@@ -256,7 +256,7 @@ export default function HomePage() {
                   </motion.div>
                 ))}
               </div>
-              <Link href="/about" className="btn-primary">
+              <Link href="/about" className="btn-primary about-section-button">
                 Learn More About Us
                 <ArrowRight size={18} />
               </Link>
@@ -276,7 +276,7 @@ export default function HomePage() {
                   className="img-cover"
                 />
               </div>
-              <div className="absolute -bottom-8 -left-8 bg-[var(--color-burgundy)] text-white p-8 max-w-xs hidden md:block">
+              <div className="absolute -bottom-8 -left-8 bg-[var(--color-burgundy)] text-white p-8 max-w-xs hidden md:block years-overlay">
                 <div className="font-display text-5xl mb-2">25+</div>
                 <div className="text-white/80">Years of trusted service in the building industry</div>
               </div>
@@ -298,13 +298,13 @@ export default function HomePage() {
             <span className="section-label">Our Services</span>
             <h2 className="mb-6">Comprehensive Building <em>Solutions</em></h2>
             <div className="divider divider-center" />
-            <p className="text-[var(--color-gray-warm)]">
+            <p className="text-[var(--color-gray-warm)] services-intro-paragraph">
               From minor renovations to major structural works, our skilled team delivers 
               exceptional results across all aspects of residential construction.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 services-grid">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -345,7 +345,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mt-12"
+            className="text-center mt-12 view-all-services-button"
           >
             <Link href="/services" className="btn-secondary">
               View All Services
@@ -368,7 +368,7 @@ export default function HomePage() {
             <span className="section-label section-label-light">Our Portfolio</span>
             <h2 className="text-white mb-6">Featured <em>Projects</em></h2>
             <div className="divider divider-light divider-center" />
-            <p className="text-[var(--color-gray-light)] mt-6">
+            <p className="text-[var(--color-gray-light)] mt-6 projects-intro-paragraph">
               Explore our showcase of completed projects, each representing our commitment 
               to exceptional quality and client satisfaction.
             </p>
@@ -406,7 +406,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mt-12"
+            className="text-center mt-12 view-all-projects-button"
           >
             <Link href="/projects" className="btn-primary">
               View All Projects

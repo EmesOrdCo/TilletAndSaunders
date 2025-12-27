@@ -628,6 +628,74 @@ button, .btn-primary, .btn-secondary {
   outline: 3px solid transparent !important;
 }
 
+/* Years Overlay - Increase left and bottom padding */
+.years-overlay {
+  padding-top: 2rem !important;
+  padding-right: 2rem !important;
+  padding-bottom: 2.1rem !important;
+  padding-left: 2.1rem !important;
+}
+
+/* About Section - Increase margins between elements */
+.about-section-paragraph {
+  margin-bottom: 3rem !important;
+}
+
+.about-section-bullets {
+  margin-bottom: 3rem !important;
+}
+
+.about-section-button {
+  margin-top: 1.5rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Services Section - Add margin between paragraph and grid */
+.services-intro-paragraph {
+  margin-bottom: 3rem !important;
+}
+
+.services-grid {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+  padding-top: 0 !important;
+}
+
+.view-all-services-button {
+  margin-top: 3rem !important;
+}
+
+/* Projects Section - Add margin below intro paragraph */
+.projects-intro-paragraph {
+  margin-bottom: 3rem !important;
+}
+
+.view-all-projects-button {
+  margin-top: 3rem !important;
+}
+
+/* Footer Section Titles - Smaller font size */
+footer .footer-section-title,
+.footer-section-title {
+  font-size: 1.8rem !important;
+  line-height: 1.4 !important;
+}
+
+/* Footer Main Section - Increase top and bottom margins */
+.footer-main-section {
+  padding-top: 0.5rem !important;
+  padding-bottom: 1rem !important;
+}
+
+@media (min-width: 768px) {
+  .footer-main-section {
+    padding-top: 2rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
 /* Stats Section - Add top and bottom margin to elements */
 .stats-section .stats-item {
   padding-top: 1rem !important;

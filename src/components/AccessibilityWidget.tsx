@@ -10,7 +10,8 @@ import {
   MousePointerClick,
   RotateCcw,
   ChevronUp,
-  ChevronDown
+  ChevronDown,
+  ArrowUp
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -176,8 +177,21 @@ export default function AccessibilityWidget() {
     });
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
+      {/* Scroll to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-24 right-6 z-[9999] w-14 h-14 bg-[var(--color-burgundy)] text-white rounded-full shadow-lg hover:bg-[var(--color-burgundy-dark)] transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-[var(--color-burgundy)] focus:ring-offset-2"
+        aria-label="Scroll to top"
+      >
+        <ArrowUp size={24} aria-hidden="true" />
+      </button>
+
       {/* Accessibility Widget Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}

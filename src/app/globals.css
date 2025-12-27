@@ -14,6 +14,7 @@
   --color-gray-light: #9A9A9A;
   --color-off-white: #F8F7F5;
   --color-cream: #FDFCFA;
+  --color-cream-dark: #F0EDE5;
   --color-white: #FFFFFF;
   
   /* Accent Colors */
@@ -699,6 +700,28 @@ button, .btn-primary, .btn-secondary {
   margin-top: 2rem !important;
 }
 
+/* About Hero Paragraph - Increase margin below */
+.about-hero-content {
+  padding-bottom: 3rem !important;
+}
+
+.about-hero-paragraph {
+  margin-bottom: 0 !important;
+}
+
+/* Timeline - Increase distance from center line */
+.timeline-left {
+  max-width: calc(50% - 4rem) !important;
+  margin-right: 4rem !important;
+  padding-right: 0 !important;
+}
+
+.timeline-right {
+  max-width: calc(50% - 4rem) !important;
+  margin-left: 4rem !important;
+  padding-left: 0 !important;
+}
+
 /* Footer Section Titles - Smaller font size */
 footer .footer-section-title,
 .footer-section-title {
@@ -836,3 +859,74 @@ kbd {
     right: 1.5rem !important;
   }
 }
+
+/* Team intro paragraph margin */
+.team-intro-paragraph {
+  margin-bottom: 4rem !important;
+  display: block !important;
+}
+
+/* Team grid margin */
+.team-grid {
+  margin-top: 4rem !important;
+}
+
+/* Accreditations intro paragraph margin */
+.accreditations-intro-paragraph {
+  margin-bottom: 4rem !important;
+  display: block !important;
+}
+
+/* Accreditations grid margin and centering */
+.accreditations-grid {
+  margin-top: 4rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  justify-items: center !important;
+  justify-content: center !important;
+  display: grid !important;
+}
+
+/* Accreditations section container centering */
+.accreditations-section .container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* Values section container centering */
+.values-section .container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* Team section container centering */
+.team-section .container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* Values grid centering */
+.values-section .grid {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  justify-items: center !important;
+}
+
+/* CTA Section - reduced padding and centered */
+.cta-section {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+.cta-section .container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+

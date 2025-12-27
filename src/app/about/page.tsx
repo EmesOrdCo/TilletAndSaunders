@@ -118,7 +118,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="max-w-2xl"
+              className="max-w-2xl about-hero-content"
             >
               <span className="inline-block text-[var(--color-gold)] text-sm font-semibold tracking-[0.3em] uppercase mb-4">
                 About Us
@@ -126,7 +126,7 @@ export default function AboutPage() {
               <h1 className="text-white mb-4">
                 A Legacy of <em>Craftsmanship</em>
               </h1>
-              <p className="text-white/80 text-lg leading-relaxed">
+              <p className="text-white/80 text-lg leading-relaxed about-hero-paragraph">
                 For over 25 years, Tillet & Saunders has been transforming homes and 
                 building lasting relationships with our clients across London and the South East.
               </p>
@@ -136,7 +136,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story Section */}
-      <section className="section bg-[var(--color-cream)]">
+      <section className="section bg-[var(--color-cream-dark)]">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-20 lg:gap-28 items-center">
             <motion.div
@@ -213,7 +213,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="section bg-white">
+      <section className="section bg-white values-section">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -268,60 +268,64 @@ export default function AboutPage() {
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-[var(--color-burgundy)] hidden md:block" />
 
             <div className="space-y-12">
-              {timeline.map((item, index) => (
-                <motion.div
-                  key={item.year}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className={`relative flex items-center ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
-                >
-                  <div className="flex-1 md:pr-12 md:text-right hidden md:block">
-                    {index % 2 === 0 && (
-                      <>
-                        <div className="font-display text-3xl text-[var(--color-gold)] mb-2">
-                          {item.year}
-                        </div>
-                        <h3 className="text-white text-xl mb-2">{item.title}</h3>
-                        <p className="text-[var(--color-gray-light)]">{item.description}</p>
-                      </>
-                    )}
-                  </div>
-                  
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[var(--color-burgundy)] rounded-full border-4 border-[var(--color-charcoal)] hidden md:block" />
-                  
-                  <div className="flex-1 md:pl-12">
-                    {index % 2 === 1 ? (
-                      <div className="hidden md:block">
+              {timeline.map((item, index) => {
+                const isEven = index % 2 === 0;
+                return (
+                  <motion.div
+                    key={item.year}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="relative flex items-center md:flex-row"
+                  >
+                    {/* Left side - shows for even indices */}
+                    {isEven ? (
+                      <div className="flex-1 md:text-right hidden md:block timeline-left">
                         <div className="font-display text-3xl text-[var(--color-gold)] mb-2">
                           {item.year}
                         </div>
                         <h3 className="text-white text-xl mb-2">{item.title}</h3>
                         <p className="text-[var(--color-gray-light)]">{item.description}</p>
                       </div>
-                    ) : null}
-                  </div>
+                    ) : (
+                      <div className="flex-1 hidden md:block" />
+                    )}
+                    
+                    {/* Timeline dot */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[var(--color-burgundy)] rounded-full border-4 border-[var(--color-charcoal)] hidden md:block z-10" />
+                    
+                    {/* Right side - shows for odd indices */}
+                    {!isEven ? (
+                      <div className="flex-1 md:text-left hidden md:block timeline-right">
+                        <div className="font-display text-3xl text-[var(--color-gold)] mb-2">
+                          {item.year}
+                        </div>
+                        <h3 className="text-white text-xl mb-2">{item.title}</h3>
+                        <p className="text-[var(--color-gray-light)]">{item.description}</p>
+                      </div>
+                    ) : (
+                      <div className="flex-1 hidden md:block" />
+                    )}
 
-                  {/* Mobile view */}
-                  <div className="md:hidden bg-[var(--color-slate)] p-6 rounded-lg w-full">
-                    <div className="font-display text-2xl text-[var(--color-gold)] mb-2">
-                      {item.year}
+                    {/* Mobile view */}
+                    <div className="md:hidden bg-[var(--color-slate)] p-6 rounded-lg w-full">
+                      <div className="font-display text-2xl text-[var(--color-gold)] mb-2">
+                        {item.year}
+                      </div>
+                      <h3 className="text-white text-lg mb-2">{item.title}</h3>
+                      <p className="text-[var(--color-gray-light)] text-sm">{item.description}</p>
                     </div>
-                    <h3 className="text-white text-lg mb-2">{item.title}</h3>
-                    <p className="text-[var(--color-gray-light)] text-sm">{item.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
       {/* Team Section */}
-      <section className="section bg-[var(--color-cream)]">
+      <section className="section bg-[var(--color-cream-dark)] team-section">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -333,13 +337,13 @@ export default function AboutPage() {
             <span className="section-label">Our Team</span>
             <h2 className="mb-6">Meet the <em>Experts</em></h2>
             <div className="divider divider-center" />
-            <p className="text-[var(--color-gray-warm)]">
+            <p className="text-[var(--color-gray-warm)] team-intro-paragraph">
               Our success is driven by our exceptional team of dedicated professionals 
               who bring expertise, passion, and commitment to every project.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 team-grid">
             {team.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -369,7 +373,7 @@ export default function AboutPage() {
       </section>
 
       {/* Accreditations Section */}
-      <section className="section bg-white">
+      <section className="section bg-white accreditations-section">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -381,12 +385,12 @@ export default function AboutPage() {
             <span className="section-label">Accreditations</span>
             <h2 className="mb-6">Trusted & <em>Certified</em></h2>
             <div className="divider divider-center" />
-            <p className="text-[var(--color-gray-warm)]">
+            <p className="text-[var(--color-gray-warm)] accreditations-intro-paragraph">
               Our commitment to excellence is recognised by the industry&apos;s leading bodies.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 accreditations-grid">
             {accreditations.map((item, index) => (
               <motion.div
                 key={item.name}
@@ -407,7 +411,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section bg-[var(--color-burgundy)]">
+      <section className="section bg-[var(--color-burgundy)] cta-section">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

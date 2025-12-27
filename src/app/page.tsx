@@ -189,7 +189,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-[var(--color-burgundy)] py-20 md:py-28">
+      <section className="bg-[var(--color-burgundy)] py-20 md:py-28 stats-section">
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">
             {stats.map((stat, index) => (
@@ -199,13 +199,13 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="text-center"
+                className="text-center stats-item"
               >
-                <stat.icon className="w-8 h-8 text-[var(--color-gold)] mx-auto mb-4" />
-                <div className="font-display text-4xl md:text-5xl text-white mb-2">
+                <stat.icon className="w-8 h-8 text-[var(--color-gold)] mx-auto stats-icon" />
+                <div className="font-display text-4xl md:text-5xl text-white stats-value">
                   {stat.value}
                 </div>
-                <div className="text-white/70 text-sm uppercase tracking-wider">
+                <div className="text-white/70 text-sm uppercase tracking-wider stats-label">
                   {stat.label}
                 </div>
               </motion.div>

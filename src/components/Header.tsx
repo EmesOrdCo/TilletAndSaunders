@@ -35,7 +35,11 @@ export default function Header() {
   return (
     <>
       {/* Fixed Header Container */}
-      <header className="fixed top-0 w-full z-50" role="banner">
+      <header 
+        className="fixed top-0 w-full z-50" 
+        role="banner"
+        data-scrolled={isScrolled}
+      >
         {/* Top Bar - Hidden when scrolled */}
         <div 
           className={`hidden lg:block bg-[var(--color-charcoal)] text-[var(--color-off-white)] transition-all duration-300 overflow-hidden ${
@@ -63,8 +67,8 @@ export default function Header() {
         <div
           className={`w-full transition-all duration-500 ${
             isScrolled
-              ? 'bg-white/95 backdrop-blur-md shadow-lg py-4'
-              : 'bg-transparent py-6'
+              ? 'bg-white/95 backdrop-blur-md shadow-lg py-4 header-scrolled'
+              : 'bg-transparent py-6 header-top'
           }`}
         >
         <div className="container flex justify-between items-center">
@@ -108,19 +112,32 @@ export default function Header() {
               >
                 <Link
                   href={link.href}
+                  style={{
+                    color: isScrolled
+                      ? pathname === link.href
+                        ? 'var(--color-burgundy)'
+                        : 'var(--color-charcoal)'
+                      : 'white'
+                  }}
                   className={`relative font-medium text-sm uppercase tracking-wider transition-colors duration-300 group ${
                     isScrolled
                       ? pathname === link.href
-                        ? 'text-[var(--color-burgundy)]'
-                        : 'text-[var(--color-charcoal)] hover:text-[var(--color-burgundy)]'
-                      : 'text-white hover:text-white'
+                        ? 'hover:text-[var(--color-burgundy)]'
+                        : 'hover:text-[var(--color-burgundy)]'
+                      : 'hover:text-white'
                   }`}
                 >
                   {link.label}
                   <span
                     className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 ${
                       pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
-                    } ${isScrolled ? 'bg-[var(--color-burgundy)]' : 'bg-white'}`}
+                    } ${
+                      isScrolled 
+                        ? 'bg-[var(--color-burgundy)]' 
+                        : pathname === link.href 
+                          ? 'bg-white' 
+                          : 'bg-white'
+                    }`}
                   />
                 </Link>
               </motion.div>

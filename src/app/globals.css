@@ -628,6 +628,55 @@ button, .btn-primary, .btn-secondary {
   outline: 3px solid transparent !important;
 }
 
+/* Stats Section - Add top and bottom margin to elements */
+.stats-section .stats-item {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.stats-section .stats-icon {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.stats-section .stats-value {
+  margin-top: 0 !important;
+  margin-bottom: 1rem !important;
+}
+
+.stats-section .stats-label {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Header Navigation Color Transitions - Force with !important */
+header nav a {
+  transition: color 0.3s ease !important;
+}
+
+/* White text when header is at top (transparent background) */
+.header-top nav a {
+  color: white !important;
+}
+
+.header-top nav a:hover {
+  color: white !important;
+}
+
+/* Black text when header is scrolled (white background) */
+.header-scrolled nav a {
+  color: var(--color-charcoal) !important;
+}
+
+.header-scrolled nav a:hover {
+  color: var(--color-burgundy) !important;
+}
+
+/* Active link color when scrolled */
+.header-scrolled nav a[aria-current="page"] {
+  color: var(--color-burgundy) !important;
+}
+
 /* Ensure accessibility widget is always accessible */
 #accessibility-toggle,
 #accessibility-panel {

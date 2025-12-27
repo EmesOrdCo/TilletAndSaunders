@@ -676,6 +676,29 @@ button, .btn-primary, .btn-secondary {
   margin-top: 3rem !important;
 }
 
+/* CTA Phone Button - White background and text */
+.cta-phone-button {
+  background-color: white !important;
+  background: white !important;
+  color: var(--color-burgundy) !important;
+  border: 2px solid white !important;
+  border-color: white !important;
+}
+
+.cta-phone-button:hover,
+.cta-phone-button:focus {
+  background-color: var(--color-off-white) !important;
+  background: var(--color-off-white) !important;
+  color: var(--color-burgundy-dark) !important;
+  border-color: var(--color-off-white) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* CTA Buttons Container - Increase margin above */
+.cta-buttons-container {
+  margin-top: 2rem !important;
+}
+
 /* Footer Section Titles - Smaller font size */
 footer .footer-section-title,
 .footer-section-title {

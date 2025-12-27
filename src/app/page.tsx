@@ -477,13 +477,13 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-[var(--color-burgundy)]/90" />
         
-        <div className="container relative">
+        <div className="container relative flex items-center justify-center min-h-[400px]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center max-w-3xl mx-auto w-full"
           >
             <h2 className="text-white mb-6">
               Ready to Start Your <em>Project</em>?
@@ -492,12 +492,12 @@ export default function HomePage() {
               Contact us today for a free, no-obligation consultation. Let&apos;s discuss how 
               we can bring your vision to life with the quality and craftsmanship you deserve.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4 cta-buttons-container">
               <Link href="/contact" className="btn-primary bg-white text-[var(--color-burgundy)] hover:bg-[var(--color-off-white)]">
                 Get Your Free Quote
                 <ArrowRight size={18} />
               </Link>
-              <a href="tel:+441234567890" className="btn-secondary text-white border-white hover:bg-white hover:text-[var(--color-burgundy)]">
+              <a href="tel:+441234567890" className="btn-secondary cta-phone-button">
                 <Phone size={18} />
                 01234 567 890
               </a>

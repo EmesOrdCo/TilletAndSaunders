@@ -313,7 +313,7 @@ export default function ProjectsPage() {
               </button>
 
               {/* Image Gallery */}
-              <div className="relative aspect-[16/9] bg-[var(--color-charcoal)]">
+              <div className="relative aspect-[16/9] bg-[var(--color-charcoal)] project-modal-image">
                 <img
                   src={selectedProject.gallery[currentImageIndex]}
                   alt={selectedProject.title}
@@ -352,7 +352,7 @@ export default function ProjectsPage() {
               </div>
 
               {/* Content */}
-              <div className="p-8 md:p-12">
+              <div className="p-8 md:p-12 project-modal-content">
                 <div className="flex flex-wrap items-center gap-4 mb-4">
                   <span className="text-[var(--color-burgundy)] text-sm font-semibold uppercase tracking-wider">
                     {selectedProject.category}
@@ -393,23 +393,23 @@ export default function ProjectsPage() {
       </AnimatePresence>
 
       {/* CTA Section */}
-      <section className="section bg-[var(--color-burgundy)]">
-        <div className="container">
+      <section className="section bg-[var(--color-burgundy)] projects-cta-section">
+        <div className="container projects-cta-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center max-w-3xl mx-auto projects-cta-content"
           >
-            <h2 className="text-white mb-6">
+            <h2 className="text-white mb-6 projects-cta-title">
               Inspired by What You <em>See</em>?
             </h2>
-            <p className="text-white/80 text-lg mb-10">
+            <p className="text-white/80 text-lg mb-10 projects-cta-paragraph">
               Let&apos;s discuss how we can create something equally impressive for your home.
               Contact us today for a free consultation.
             </p>
-            <Link href="/contact" className="btn-primary bg-white text-[var(--color-burgundy)] hover:bg-[var(--color-off-white)]">
+            <Link href="/contact" className="btn-primary bg-white text-[var(--color-burgundy)] hover:bg-[var(--color-off-white)] projects-cta-button">
               Get in Touch
               <ArrowRight size={18} />
             </Link>

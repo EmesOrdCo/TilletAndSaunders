@@ -1329,3 +1329,184 @@ kbd {
   border-color: var(--color-burgundy) !important;
 }
 
+/* Projects CTA section centering */
+.projects-cta-section {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+.projects-cta-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.projects-cta-content {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.projects-cta-title {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.projects-cta-paragraph {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.projects-cta-button {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Project modal image margin */
+.project-modal-image {
+  margin-bottom: 0 !important;
+}
+
+.project-modal-content {
+  padding-top: 4rem !important;
+  margin-top: 0 !important;
+}
+
+/* Contact hero section - increase gap before white section */
+.contact-hero-section {
+  padding-bottom: 8rem !important;
+}
+
+.contact-hero-wrapper {
+  bottom: 4rem !important;
+}
+
+.contact-hero-container {
+  padding-bottom: 0 !important;
+}
+
+.contact-hero-content {
+  padding-bottom: 0 !important;
+}
+
+/* Contact form - increase vertical spacing */
+.contact-form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2.5rem !important;
+}
+
+.contact-form > div {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+.contact-form .grid {
+  margin-bottom: 0 !important;
+  gap: 2rem !important;
+}
+
+.contact-form .grid > div {
+  margin-bottom: 0 !important;
+}
+
+.contact-form label {
+  margin-bottom: 1rem !important;
+  display: block !important;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  margin-top: 0 !important;
+  padding-top: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
+}
+
+/* Contact info section spacing */
+.contact-intro-paragraph {
+  margin-bottom: 3rem !important;
+  display: block !important;
+}
+
+.contact-info-items {
+  margin-bottom: 4rem !important;
+  margin-top: 0 !important;
+}
+
+.contact-map {
+  margin-top: 4rem !important;
+}
+
+/* Contact form container padding */
+.contact-form-container {
+  padding: 3rem 4rem !important;
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+  padding-left: 4rem !important;
+  padding-right: 4rem !important;
+}
+
+/* Contact CTA section centering */
+.contact-cta-section {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+.contact-cta-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.contact-cta-content {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.contact-cta-title {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.contact-cta-paragraph {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.contact-cta-button {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+

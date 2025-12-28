@@ -83,7 +83,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[50vh] min-h-[400px] overflow-hidden">
+      <section className="relative h-[50vh] min-h-[400px] overflow-hidden contact-hero-section">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -92,13 +92,13 @@ export default function ContactPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
         
-        <div className="absolute bottom-0 left-0 right-0">
-          <div className="container pb-12 md:pb-16">
+        <div className="absolute bottom-0 left-0 right-0 contact-hero-wrapper">
+          <div className="container pb-12 md:pb-16 contact-hero-container">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="max-w-2xl"
+              className="max-w-2xl contact-hero-content"
             >
               <span className="inline-block text-[var(--color-gold)] text-sm font-semibold tracking-[0.3em] uppercase mb-4">
                 Get in Touch
@@ -130,12 +130,12 @@ export default function ContactPage() {
               <span className="section-label">Contact Information</span>
               <h2 className="mb-6">Get in <em>Touch</em></h2>
               <div className="divider" />
-              <p className="text-[var(--color-gray-warm)] mb-10">
+              <p className="text-[var(--color-gray-warm)] mb-10 contact-intro-paragraph">
                 We&apos;d love to hear about your project. Reach out using any of the methods 
                 below, or fill in the form and we&apos;ll get back to you within 24 hours.
               </p>
 
-              <div className="space-y-6 mb-10">
+              <div className="space-y-6 mb-10 contact-info-items">
                 <a
                   href="tel:+441234567890"
                   className="flex items-start gap-4 group"
@@ -195,7 +195,7 @@ export default function ContactPage() {
               </div>
 
               {/* Map placeholder */}
-              <div className="aspect-video bg-[var(--color-gray-light)] relative overflow-hidden">
+              <div className="aspect-video bg-[var(--color-gray-light)] relative overflow-hidden contact-map">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.542156896357!2d-0.1276524!3d51.5013449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604c38c8cd1d9%3A0xb78f2474b9a45aa9!2sWestminster%2C%20London!5e0!3m2!1sen!2suk!4v1234567890"
                   width="100%"
@@ -218,7 +218,7 @@ export default function ContactPage() {
               viewport={{ once: true }}
               className="lg:col-span-3"
             >
-              <div className="bg-white p-8 md:p-12 shadow-lg">
+              <div className="bg-white shadow-lg contact-form-container">
                 {isSubmitted ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -260,7 +260,7 @@ export default function ContactPage() {
                       Fill in the form below and we&apos;ll get back to you as soon as possible.
                     </p>
 
-                    <form onSubmit={handleSubmit} className="space-y-6" noValidate aria-label="Contact form">
+                    <form onSubmit={handleSubmit} className="contact-form" noValidate aria-label="Contact form">
                       <div role="status" aria-live="polite" aria-atomic="true" className="sr-only" id="form-status"></div>
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
@@ -472,23 +472,23 @@ export default function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section bg-[var(--color-burgundy)]">
-        <div className="container">
+      <section className="section bg-[var(--color-burgundy)] contact-cta-section">
+        <div className="container contact-cta-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center max-w-3xl mx-auto contact-cta-content"
           >
-            <h2 className="text-white mb-6">
+            <h2 className="text-white mb-6 contact-cta-title">
               Prefer to Talk <em>Directly</em>?
             </h2>
-            <p className="text-white/80 text-lg mb-10">
+            <p className="text-white/80 text-lg mb-10 contact-cta-paragraph">
               Give us a call and speak with a member of our team. We&apos;re here to answer 
               your questions and discuss your project requirements.
             </p>
-            <a href="tel:+441234567890" className="btn-primary bg-white text-[var(--color-burgundy)] hover:bg-[var(--color-off-white)]">
+            <a href="tel:+441234567890" className="btn-primary bg-white text-[var(--color-burgundy)] hover:bg-[var(--color-off-white)] contact-cta-button">
               <Phone size={18} />
               Call 01234 567 890
               <ArrowRight size={18} />

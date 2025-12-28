@@ -39,6 +39,7 @@ export default function Header() {
         className="fixed top-0 w-full z-50" 
         role="banner"
         data-scrolled={isScrolled}
+        data-menu-open={isMobileMenuOpen}
       >
         {/* Top Bar - Hidden when scrolled */}
         <div 
@@ -73,12 +74,12 @@ export default function Header() {
         >
         <div className="container flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="relative z-10">
+          <Link href="/" className={`relative z-[60] ${isMobileMenuOpen ? 'lg:block hidden' : ''}`}>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex flex-col"
+              className="flex flex-col pointer-events-auto"
             >
               <span
                 className={`font-display text-2xl md:text-3xl font-semibold tracking-tight transition-colors duration-300 ${
@@ -156,7 +157,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden relative z-10 p-2 transition-colors duration-300 min-w-[44px] min-h-[44px] ${
+            className={`lg:hidden relative z-[60] p-2 transition-all duration-300 min-w-[44px] min-h-[44px] active:scale-95 active:opacity-80 ${
               isScrolled || isMobileMenuOpen
                 ? 'text-[var(--color-charcoal)]'
                 : 'text-white'
@@ -196,22 +197,24 @@ export default function Header() {
               aria-modal="true"
               aria-label="Mobile menu"
             >
-              <div className="flex flex-col h-full pt-24 px-8">
-                <nav className="flex flex-col gap-6" role="navigation" aria-label="Mobile navigation">
+              <div className="flex flex-col h-full pt-40 px-8">
+                <nav className="flex flex-col gap-2 mt-8 -mx-8 px-8" role="navigation" aria-label="Mobile navigation">
                   {navLinks.map((link, index) => (
                     <motion.div
                       key={link.href}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="w-full"
                     >
                       <Link
                         href={link.href}
-                        className={`text-2xl font-display ${
+                        className={`block w-full text-2xl font-display pointer-events-auto py-4 px-4 rounded transition-colors ${
                           pathname === link.href
-                            ? 'text-[var(--color-burgundy)]'
-                            : 'text-[var(--color-charcoal)]'
+                            ? 'text-[var(--color-burgundy)] bg-[var(--color-off-white)]'
+                            : 'text-[var(--color-charcoal)] hover:bg-[var(--color-off-white)]'
                         }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {link.label}
                       </Link>
@@ -220,17 +223,17 @@ export default function Header() {
                 </nav>
 
                 <div className="mt-auto pb-10">
-                  <div className="border-t border-[var(--color-off-white)] pt-8 mb-8">
+                  <div className="border-t border-[var(--color-off-white)] pt-8 mb-8 space-y-2">
                     <a
                       href="tel:+441234567890"
-                      className="flex items-center gap-3 text-[var(--color-charcoal)] mb-4"
+                      className="flex items-center gap-3 text-[var(--color-charcoal)] py-3 px-4 rounded hover:bg-[var(--color-off-white)] transition-colors min-h-[44px]"
                     >
                       <Phone size={18} className="text-[var(--color-burgundy)]" />
                       <span>01234 567 890</span>
                     </a>
                     <a
                       href="mailto:info@tilletandsaunders.co.uk"
-                      className="flex items-center gap-3 text-[var(--color-charcoal)]"
+                      className="flex items-center gap-3 text-[var(--color-charcoal)] py-3 px-4 rounded hover:bg-[var(--color-off-white)] transition-colors min-h-[44px]"
                     >
                       <Mail size={18} className="text-[var(--color-burgundy)]" />
                       <span>info@tilletandsaunders.co.uk</span>

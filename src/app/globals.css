@@ -108,6 +108,34 @@ a {
   color: inherit;
   text-decoration: none;
   transition: color 0.3s var(--transition-smooth);
+  -webkit-tap-highlight-color: rgba(122, 0, 37, 0.2);
+  touch-action: manipulation;
+  display: inline-block;
+  position: relative;
+}
+
+a:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+/* Ensure links have clickable padding on mobile */
+@media (max-width: 768px) {
+  a {
+    padding: 0.5rem;
+    margin: -0.5rem;
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Navigation links need more padding */
+  nav a {
+    padding: 0.75rem 1rem;
+    margin: -0.75rem -1rem;
+  }
 }
 
 /* Button Styles */
@@ -129,6 +157,8 @@ a {
   transition: all 0.4s var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(122, 0, 37, 0.3);
 }
 
 .btn-primary::before {
@@ -157,6 +187,15 @@ a {
   left: 100%;
 }
 
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: var(--color-burgundy-dark) !important;
+  transform: scale(0.98) !important;
+  box-shadow: 0 5px 15px rgba(122, 0, 37, 0.5) !important;
+  outline: 3px solid var(--color-burgundy) !important;
+  outline-offset: 2px !important;
+}
+
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -173,12 +212,24 @@ a {
   border: 2px solid var(--color-burgundy);
   cursor: pointer;
   transition: all 0.4s var(--transition-smooth);
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(122, 0, 37, 0.3);
 }
 
 .btn-secondary:hover {
   background-color: var(--color-burgundy);
   color: var(--color-white);
   transform: translateY(-2px);
+}
+
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: var(--color-burgundy) !important;
+  color: var(--color-white) !important;
+  transform: scale(0.98) !important;
+  box-shadow: 0 5px 15px rgba(122, 0, 37, 0.3) !important;
+  outline: 3px solid var(--color-burgundy) !important;
+  outline-offset: 2px !important;
 }
 
 /* Container */
@@ -382,6 +433,13 @@ input, textarea, select, button {
 button, .btn-primary, .btn-secondary {
   min-height: 44px;
   min-width: 44px;
+  -webkit-tap-highlight-color: rgba(122, 0, 37, 0.3);
+  touch-action: manipulation;
+  user-select: none;
+}
+
+button:active {
+  opacity: 0.9;
 }
 
 /* Font display class */
@@ -883,6 +941,63 @@ header nav a {
   color: var(--color-burgundy) !important;
 }
 
+/* Hide logo when mobile menu is open on mobile devices */
+@media (max-width: 1023px) {
+  header[data-menu-open="true"] a[href="/"] {
+    display: none !important;
+  }
+}
+
+/* Mobile menu - ensure proper top spacing */
+#mobile-menu > div {
+  padding-top: 10rem !important;
+  overflow-x: hidden !important;
+}
+
+#mobile-menu nav {
+  margin-top: 2rem !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+#mobile-menu nav > div {
+  width: 100% !important;
+  overflow: hidden !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+#mobile-menu nav a {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+/* Mobile menu links - ensure they're clickable */
+#mobile-menu a,
+#mobile-menu button {
+  position: relative;
+  z-index: 50;
+  pointer-events: auto !important;
+  -webkit-tap-highlight-color: rgba(122, 0, 37, 0.3);
+  touch-action: manipulation;
+  min-height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+#mobile-menu a:active,
+#mobile-menu button:active {
+  opacity: 0.7;
+  transform: scale(0.98);
+  background-color: var(--color-cream-dark) !important;
+}
+
 /* Ensure accessibility widget is always accessible */
 #accessibility-toggle,
 #accessibility-panel {
@@ -1325,6 +1440,16 @@ kbd {
   color: white !important;
 }
 
+.project-filter-button:active,
+.project-filter-button:focus {
+  background-color: var(--color-burgundy) !important;
+  color: white !important;
+  transform: scale(0.95) !important;
+  box-shadow: 0 3px 10px rgba(122, 0, 37, 0.4) !important;
+  outline: 3px solid var(--color-burgundy) !important;
+  outline-offset: 2px !important;
+}
+
 .project-filter-active {
   background-color: var(--color-burgundy) !important;
   color: white !important;
@@ -1335,6 +1460,13 @@ kbd {
   background-color: var(--color-burgundy) !important;
   color: white !important;
   border-color: var(--color-burgundy) !important;
+}
+
+.project-filter-active:active,
+.project-filter-active:focus {
+  background-color: var(--color-burgundy-dark) !important;
+  transform: scale(0.95) !important;
+  box-shadow: 0 3px 10px rgba(122, 0, 37, 0.5) !important;
 }
 
 /* Mobile dropdown styles - only show on mobile */
@@ -1386,6 +1518,13 @@ kbd {
   outline-offset: 2px !important;
 }
 
+.project-filter-dropdown-button:active {
+  background-color: var(--color-burgundy-dark) !important;
+  color: white !important;
+  transform: scale(0.98) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
 .project-filter-dropdown-item {
   font-size: 0.875rem !important;
   font-weight: 600 !important;
@@ -1409,6 +1548,12 @@ kbd {
   color: var(--color-burgundy) !important;
   outline: 2px solid var(--color-burgundy) !important;
   outline-offset: -2px !important;
+}
+
+.project-filter-dropdown-item:active {
+  background-color: var(--color-cream-dark) !important;
+  transform: scale(0.98) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 .project-filter-dropdown-active {

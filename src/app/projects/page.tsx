@@ -2,8 +2,8 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { useState } from 'react';
-import { ArrowRight, X, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { ArrowRight, X, ChevronLeft, ChevronRight, MapPin, ChevronDown } from 'lucide-react';
 
 const categories = [
   'All',
@@ -156,6 +156,25 @@ export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   const filteredProjects = selectedCategory === 'All'
     ? projects
@@ -222,9 +241,52 @@ export default function ProjectsPage() {
       </section>
 
       {/* Filter Section */}
-      <section className="bg-white py-8 border-b border-[var(--color-off-white)] sticky top-[72px] z-30 project-filters">
+      <section className="bg-white py-8 border-b border-[var(--color-off-white)] project-filters">
         <div className="container">
-          <div className="project-filters-container">
+          {/* Mobile Dropdown */}
+          <div className="md:hidden" ref={dropdownRef}>
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="project-filter-dropdown-button"
+              aria-expanded={isDropdownOpen}
+              aria-haspopup="listbox"
+            >
+              <span>{selectedCategory}</span>
+              <ChevronDown 
+                size={20} 
+                className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="mt-2 bg-white border-2 border-[var(--color-burgundy)] shadow-lg"
+                >
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => {
+                        setSelectedCategory(category);
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-3 project-filter-dropdown-item ${
+                        selectedCategory === category ? 'project-filter-dropdown-active' : ''
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Desktop Horizontal Buttons */}
+          <div className="hidden md:flex project-filters-container">
             {categories.map((category) => (
               <button
                 key={category}

@@ -154,22 +154,22 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[50vh] min-h-[400px] overflow-hidden">
+      <section className="relative h-[60vh] min-h-[500px] overflow-hidden services-hero-section">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center services-hero-bg"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80)',
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
         
-        <div className="absolute bottom-0 left-0 right-0">
-          <div className="container pb-12 md:pb-16">
+        <div className="absolute inset-0 flex items-end services-hero-container">
+          <div className="container pb-12 md:pb-16 w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="max-w-2xl"
+              className="max-w-2xl services-hero-content"
             >
               <span className="inline-block text-[var(--color-gold)] text-sm font-semibold tracking-[0.3em] uppercase mb-4">
                 Our Services
@@ -177,7 +177,7 @@ export default function ServicesPage() {
               <h1 className="text-white mb-4">
                 Comprehensive Building <em>Solutions</em>
               </h1>
-              <p className="text-white/80 text-lg leading-relaxed">
+              <p className="text-white/80 text-lg leading-relaxed services-hero-paragraph">
                 From kitchen renovations to complete extensions, our skilled team delivers 
                 exceptional craftsmanship across all aspects of residential construction.
               </p>
@@ -216,10 +216,10 @@ export default function ServicesPage() {
                     <h2 className="text-3xl md:text-4xl">{service.title}</h2>
                   </div>
                   <div className="divider" />
-                  <p className="text-[var(--color-gray-warm)] mb-8 leading-relaxed text-lg">
+                  <p className="text-[var(--color-gray-warm)] leading-relaxed text-lg service-detail-paragraph">
                     {service.fullDesc}
                   </p>
-                  <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                  <div className="grid sm:grid-cols-2 gap-4 service-features-grid">
                     {service.features.map((feature) => (
                       <div key={feature} className="flex items-center gap-3">
                         <CheckCircle className="text-[var(--color-burgundy)] flex-shrink-0" size={18} />
@@ -227,7 +227,7 @@ export default function ServicesPage() {
                       </div>
                     ))}
                   </div>
-                  <Link href="/contact" className="btn-primary">
+                  <Link href="/contact" className="btn-primary service-detail-button">
                     Discuss Your Project
                     <ArrowRight size={18} />
                   </Link>
@@ -255,25 +255,25 @@ export default function ServicesPage() {
       </section>
 
       {/* Additional Services */}
-      <section className="section bg-white">
-        <div className="container">
+      <section className="section bg-white additional-services-section">
+        <div className="container additional-services-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center max-w-2xl mx-auto mb-16"
+            className="text-center max-w-2xl mx-auto mb-16 additional-services-header"
           >
             <span className="section-label">Additional Services</span>
             <h2 className="mb-6">Complete Home <em>Solutions</em></h2>
             <div className="divider divider-center" />
-            <p className="text-[var(--color-gray-warm)]">
+            <p className="text-[var(--color-gray-warm)] additional-services-intro">
               Beyond our core services, we offer a comprehensive range of building 
               and renovation solutions.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 additional-services-grid mx-auto">
             {additionalServices.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -295,19 +295,19 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Section */}
-      <section className="section bg-[var(--color-charcoal)]">
-        <div className="container">
+      <section className="section bg-[var(--color-charcoal)] process-section">
+        <div className="container process-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center max-w-2xl mx-auto mb-16"
+            className="text-center max-w-2xl mx-auto mb-16 process-header"
           >
             <span className="section-label section-label-light">Our Process</span>
-            <h2 className="text-white mb-6">How We <em>Work</em></h2>
+            <h2 className="text-white mb-6 process-title">How We <em>Work</em></h2>
             <div className="divider divider-light divider-center" />
-            <p className="text-[var(--color-gray-light)]">
+            <p className="text-[var(--color-gray-light)] process-description">
               A clear, structured approach ensures your project runs smoothly from start to finish.
             </p>
           </motion.div>
@@ -320,19 +320,13 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="relative"
+                className="relative process-item"
               >
-                <div className="text-6xl font-display text-[var(--color-burgundy)] mb-4">
+                <div className="text-6xl font-display text-[var(--color-burgundy)] mb-4 process-number">
                   {item.step}
                 </div>
                 <h3 className="text-white text-xl mb-3">{item.title}</h3>
                 <p className="text-[var(--color-gray-light)]">{item.description}</p>
-                
-                {index < process.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-[var(--color-burgundy)]/30">
-                    <ArrowRight className="absolute right-0 top-1/2 -translate-y-1/2 text-[var(--color-burgundy)]" size={20} />
-                  </div>
-                )}
               </motion.div>
             ))}
           </div>
@@ -340,28 +334,28 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section bg-[var(--color-burgundy)]">
-        <div className="container">
+      <section className="section bg-[var(--color-burgundy)] cta-section">
+        <div className="container cta-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center max-w-3xl mx-auto cta-content"
           >
-            <h2 className="text-white mb-6">
+            <h2 className="text-white cta-title">
               Ready to Start Your <em>Project</em>?
             </h2>
-            <p className="text-white/80 text-lg mb-10">
+            <p className="text-white/80 text-lg mb-10 cta-paragraph">
               Contact us today for a free consultation and quote. Our team is ready to 
               discuss your requirements and bring your vision to life.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-primary bg-white text-[var(--color-burgundy)] hover:bg-[var(--color-off-white)]">
+            <div className="flex flex-wrap justify-center gap-4 cta-buttons">
+              <Link href="/contact" className="btn-primary bg-white text-[var(--color-burgundy)] hover:bg-[var(--color-off-white)] cta-button">
                 Get a Free Quote
                 <ArrowRight size={18} />
               </Link>
-              <a href="tel:+441234567890" className="btn-secondary text-white border-white hover:bg-white hover:text-[var(--color-burgundy)]">
+              <a href="tel:+441234567890" className="btn-secondary text-white border-white hover:bg-white hover:text-[var(--color-burgundy)] cta-button cta-phone-button">
                 <Phone size={18} />
                 01234 567 890
               </a>

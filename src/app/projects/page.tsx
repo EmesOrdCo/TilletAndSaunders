@@ -189,7 +189,7 @@ export default function ProjectsPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[50vh] min-h-[400px] overflow-hidden">
+      <section className="relative h-[50vh] min-h-[400px] overflow-hidden projects-hero-section">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -198,13 +198,13 @@ export default function ProjectsPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
         
-        <div className="absolute bottom-0 left-0 right-0">
-          <div className="container pb-12 md:pb-16">
+        <div className="absolute bottom-0 left-0 right-0 projects-hero-wrapper">
+          <div className="container pb-12 md:pb-16 projects-hero-container">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="max-w-2xl"
+              className="max-w-2xl projects-hero-content"
             >
               <span className="inline-block text-[var(--color-gold)] text-sm font-semibold tracking-[0.3em] uppercase mb-4">
                 Our Portfolio
@@ -212,7 +212,7 @@ export default function ProjectsPage() {
               <h1 className="text-white mb-4">
                 Featured <em>Projects</em>
               </h1>
-              <p className="text-white/80 text-lg leading-relaxed">
+              <p className="text-white/80 text-lg leading-relaxed projects-hero-description">
                 Explore our showcase of completed projects, each representing our commitment 
                 to exceptional quality and client satisfaction.
               </p>
@@ -222,18 +222,14 @@ export default function ProjectsPage() {
       </section>
 
       {/* Filter Section */}
-      <section className="bg-white py-6 border-b border-[var(--color-off-white)] sticky top-[72px] z-30">
+      <section className="bg-white py-8 border-b border-[var(--color-off-white)] sticky top-[72px] z-30 project-filters">
         <div className="container">
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+          <div className="project-filters-container">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
-                  selectedCategory === category
-                    ? 'bg-[var(--color-burgundy)] text-white'
-                    : 'bg-[var(--color-cream)] text-[var(--color-charcoal)] hover:bg-[var(--color-burgundy)] hover:text-white'
-                }`}
+                className={`project-filter-button ${selectedCategory === category ? 'project-filter-active' : ''}`}
               >
                 {category}
               </button>

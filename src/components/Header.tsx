@@ -89,7 +89,7 @@ export default function Header() {
                     : 'text-white'
                 }`}
               >
-                Tillet & Saunders
+                Tillett & Saunders
               </span>
               <span
                 className={`text-[0.65rem] tracking-[0.3em] uppercase font-medium transition-colors duration-300 ${

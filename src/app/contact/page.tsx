@@ -39,8 +39,25 @@ const faqs = [
 ];
 
 export default function ContactPage() {
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative h-[50vh] min-h-[400px] overflow-hidden contact-hero-section">
         <div
@@ -164,7 +181,7 @@ export default function ContactPage() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="absolute inset-0"
-                  title="Interactive map showing Tillet & Saunders location in Westminster, London"
+                  title="Interactive map showing Tillett & Saunders location in Westminster, London"
                 ></iframe>
               </div>
             </motion.div>

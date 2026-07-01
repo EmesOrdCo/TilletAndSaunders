@@ -32,7 +32,7 @@ export default function TermsOfServicePage() {
                 Terms of <em>Service</em>
               </h1>
               <p className="text-white/80 text-lg leading-relaxed">
-                Please read these terms carefully before using our services or website. These terms govern your relationship with Tillet & Saunders.
+                Please read these terms carefully before using our services or website. These terms govern your relationship with Tillett & Saunders.
               </p>
             </motion.div>
           </div>
@@ -54,7 +54,7 @@ export default function TermsOfServicePage() {
                 <strong>Last Updated:</strong> {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
               <p className="text-[var(--color-gray-warm)] leading-relaxed mb-4">
-                These Terms of Service (&quot;Terms&quot;) govern your access to and use of the Tillet & Saunders website 
+                These Terms of Service (&quot;Terms&quot;) govern your access to and use of the Tillett & Saunders website 
                 (the &quot;Website&quot;) and our building and construction services (the &quot;Services&quot;). 
                 By accessing or using our Website or Services, you agree to be bound by these Terms.
               </p>
@@ -75,20 +75,20 @@ export default function TermsOfServicePage() {
                 </div>
                 <div className="divider" />
                 <p className="text-[var(--color-gray-warm)] leading-relaxed">
-                  By accessing or using the Tillet & Saunders website, you acknowledge that you have read, understood, 
+                  By accessing or using the Tillett & Saunders website, you acknowledge that you have read, understood, 
                   and agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, 
                   please do not use our website or services. These Terms constitute a legally binding agreement between 
-                  you and Tillet & Saunders.
+                  you and Tillett & Saunders.
                 </p>
               </div>
 
               {/* About Us */}
               <div>
-                <h2 className="text-2xl font-display mb-6">2. About Tillet & Saunders</h2>
+                <h2 className="text-2xl font-display mb-6">2. About Tillett & Saunders</h2>
                 <div className="divider" />
                 <div className="space-y-4 text-[var(--color-gray-warm)] leading-relaxed">
                   <p>
-                    Tillet & Saunders is a building and construction company based in London, serving London and the South East. 
+                    Tillett & Saunders is a building and construction company based in London, serving London and the South East. 
                     We provide professional building services including but not limited to:
                   </p>
                   <ul className="list-disc list-inside space-y-2 ml-4">
@@ -140,7 +140,7 @@ export default function TermsOfServicePage() {
                 <div className="divider" />
                 <div className="space-y-4 text-[var(--color-gray-warm)] leading-relaxed">
                   <p>
-                    All quotes and estimates provided by Tillet & Saunders are subject to the following terms:
+                    All quotes and estimates provided by Tillett & Saunders are subject to the following terms:
                   </p>
                   <ul className="list-disc list-inside space-y-2 ml-4">
                     <li><strong>Validity Period:</strong> Quotes and estimates are valid for the period specified in the quote (typically 30 days), unless otherwise stated. After this period, prices may be subject to change</li>
@@ -186,7 +186,7 @@ export default function TermsOfServicePage() {
                 <div className="divider" />
                 <div className="space-y-4 text-[var(--color-gray-warm)] leading-relaxed">
                   <p>
-                    Tillet & Saunders provides the following warranties and guarantees:
+                    Tillett & Saunders provides the following warranties and guarantees:
                   </p>
                   <ul className="list-disc list-inside space-y-2 ml-4">
                     <li><strong>Workmanship Guarantee:</strong> We guarantee our workmanship for a period of 12 months from the date of completion, unless otherwise specified in your contract. This covers defects in workmanship but not wear and tear, damage caused by misuse, or issues arising from factors beyond our control</li>
@@ -271,7 +271,7 @@ export default function TermsOfServicePage() {
                 <div className="space-y-4 text-[var(--color-gray-warm)] leading-relaxed">
                   <p>
                     All content on this website, including text, graphics, logos, images, photographs, designs, and software, 
-                    is the property of Tillet & Saunders or its licensors and is protected by copyright, trademark, and other 
+                    is the property of Tillett & Saunders or its licensors and is protected by copyright, trademark, and other 
                     intellectual property laws.
                   </p>
                   <p>
@@ -314,7 +314,7 @@ export default function TermsOfServicePage() {
                 <h2 className="text-2xl font-display mb-6">12. Indemnification</h2>
                 <div className="divider" />
                 <p className="text-[var(--color-gray-warm)] leading-relaxed">
-                  You agree to indemnify and hold harmless Tillet & Saunders, its officers, employees, agents, and subcontractors 
+                  You agree to indemnify and hold harmless Tillett & Saunders, its officers, employees, agents, and subcontractors 
                   from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from:
                 </p>
                 <ul className="list-disc list-inside space-y-2 ml-4 mt-4">
@@ -405,7 +405,7 @@ export default function TermsOfServicePage() {
                 <div className="divider" />
                 <p className="text-[var(--color-gray-warm)] leading-relaxed">
                   These Terms, together with our Privacy Policy and any specific contract for services, constitute the entire 
-                  agreement between you and Tillet & Saunders regarding your use of our website and services. These Terms 
+                  agreement between you and Tillett & Saunders regarding your use of our website and services. These Terms 
                   supersede all prior agreements, understandings, and communications, whether written or oral, relating to the 
                   subject matter hereof.
                 </p>
@@ -420,7 +420,7 @@ export default function TermsOfServicePage() {
                     If you have any questions about these Terms of Service, please contact us:
                   </p>
                   <div className="bg-[var(--color-cream)] p-6 rounded-lg border border-[var(--color-off-white)]">
-                    <p className="font-semibold text-[var(--color-charcoal)] mb-3 text-lg">Tillet & Saunders</p>
+                    <p className="font-semibold text-[var(--color-charcoal)] mb-3 text-lg">Tillett & Saunders</p>
                     <div className="space-y-2">
                       <p><strong>Email:</strong> <a href={siteConfig.email.mailtoHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.email.address}</a></p>
                       <p><strong>Phone:</strong> <a href={siteConfig.phone.telHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.phone.display}</a></p>

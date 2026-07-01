@@ -73,7 +73,7 @@ export async function POST(request: Request) {
     message: buildMessage(payload),
     service: payload.service?.trim() || '',
     budget: payload.budget?.trim() || '',
-    source: 'Tillet & Saunders Website',
+    source: 'Tillett & Saunders Website',
     tags: ['website-form'],
   };
 

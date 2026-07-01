@@ -54,7 +54,7 @@ export default function CookiePolicyPage() {
                 <strong>Last Updated:</strong> {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
               <p className="text-[var(--color-gray-warm)] leading-relaxed mb-4">
-                This Cookie Policy explains what cookies are, how Tillet & Saunders uses cookies on our website 
+                This Cookie Policy explains what cookies are, how Tillett & Saunders uses cookies on our website 
                 (the &quot;Website&quot;), and how you can control cookie preferences. This policy should be read alongside our{' '}
                 <a href="/privacy-policy" className="text-[var(--color-burgundy)] hover:underline font-semibold">Privacy Policy</a>, 
                 which provides more information about how we collect, use, and protect your personal information.
@@ -375,7 +375,7 @@ export default function CookiePolicyPage() {
                     If you have any questions about our use of cookies or this Cookie Policy, please contact us:
                   </p>
                   <div className="bg-[var(--color-cream)] p-6 rounded-lg border border-[var(--color-off-white)]">
-                    <p className="font-semibold text-[var(--color-charcoal)] mb-3 text-lg">Tillet & Saunders</p>
+                    <p className="font-semibold text-[var(--color-charcoal)] mb-3 text-lg">Tillett & Saunders</p>
                     <div className="space-y-2">
                       <p><strong>Email:</strong> <a href={siteConfig.email.mailtoHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.email.address}</a></p>
                       <p><strong>Phone:</strong> <a href={siteConfig.phone.telHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.phone.display}</a></p>

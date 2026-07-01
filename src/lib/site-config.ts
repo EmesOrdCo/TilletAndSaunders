@@ -1,8 +1,15 @@
 const DEFAULT_PHONE_E164 = '+441234567890';
 const DEFAULT_PHONE_DISPLAY = '01234 567 890';
-const DEFAULT_EMAIL = 'info@tilletandsaunders.co.uk';
+const DEFAULT_EMAIL = 'info@tillettandsaunders.co.uk';
 
 export const siteConfig = {
+  name: 'Tillett & Saunders',
+  legalName: 'Tillett & Saunders',
+  tagline: 'Building Excellence',
+  url: 'https://tillettandsaunders.co.uk',
+  description:
+    'Premium building and construction services in London and the South East. Kitchen fitting, extensions, flooring, plastering, bathrooms, and roofing delivered with exceptional craftsmanship.',
+  areaServed: ['London', 'Surrey', 'Kent', 'Essex', 'Hertfordshire', 'South East England'],
   phone: {
     e164: process.env.NEXT_PUBLIC_BUSINESS_PHONE_E164 ?? DEFAULT_PHONE_E164,
     display: process.env.NEXT_PUBLIC_BUSINESS_PHONE_DISPLAY ?? DEFAULT_PHONE_DISPLAY,

@@ -49,7 +49,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <span className="font-display text-2xl font-semibold text-white">
-                Tillet & Saunders
+                Tillett & Saunders
               </span>
               <span className="block text-[0.65rem] tracking-[0.3em] uppercase text-[var(--color-gold)] mt-1">
                 Building Excellence
@@ -176,7 +176,7 @@ export default function Footer() {
         <div className="container py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-[var(--color-gray-light)] text-sm text-center md:text-left">
-              © {new Date().getFullYear()} Tillet & Saunders. All rights reserved.
+              © {new Date().getFullYear()} Tillett & Saunders. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-sm text-[var(--color-gray-light)]">
               <Link href="/privacy-policy" className="hover:text-white transition-colors">

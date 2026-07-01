@@ -64,7 +64,7 @@ const testimonials = [
   {
     name: 'Sarah Mitchell',
     location: 'Chelsea, London',
-    text: 'Tillet & Saunders transformed our Victorian terrace with a stunning rear extension. Their attention to detail and professionalism was outstanding. We couldn\'t be happier with the result.',
+    text: 'Tillett & Saunders transformed our Victorian terrace with a stunning rear extension. Their attention to detail and professionalism was outstanding. We couldn\'t be happier with the result.',
     project: 'Rear Extension',
     rating: 5,
   },
@@ -78,7 +78,7 @@ const testimonials = [
   {
     name: 'Dr. Michael Chen',
     location: 'Hampstead, London',
-    text: 'Having worked with several builders over the years, I can confidently say Tillet & Saunders are in a league of their own. Impeccable quality and communication throughout.',
+    text: 'Having worked with several builders over the years, I can confidently say Tillett & Saunders are in a league of their own. Impeccable quality and communication throughout.',
     project: 'Full Renovation',
     rating: 5,
   },
@@ -156,7 +156,7 @@ export default function HomePage() {
               <span className="italic font-normal">Spaces</span>
             </h1>
             <p className="text-white/80 text-lg md:text-xl mb-10 max-w-2xl leading-relaxed">
-              For over 25 years, Tillet & Saunders has been transforming homes across London 
+              For over 25 years, Tillett & Saunders has been transforming homes across London 
               and the South East with uncompromising quality and meticulous attention to detail.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -229,7 +229,7 @@ export default function HomePage() {
               <h2 className="mb-6">Building Trust Through <em>Excellence</em></h2>
               <div className="divider" />
               <p className="text-[var(--color-gray-warm)] mb-6 leading-relaxed">
-                Founded in 1998, Tillet & Saunders has built a reputation for delivering 
+                Founded in 1998, Tillett & Saunders has built a reputation for delivering 
                 exceptional craftsmanship across London and the South East. Our team of 
                 skilled tradesmen brings decades of combined experience to every project.
               </p>

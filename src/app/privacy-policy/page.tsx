@@ -54,7 +54,7 @@ export default function PrivacyPolicyPage() {
                 <strong>Last Updated:</strong> {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
               <p className="text-[var(--color-gray-warm)] leading-relaxed mb-4">
-                Tillet & Saunders (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to protecting your privacy and personal data. 
+                Tillett & Saunders (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to protecting your privacy and personal data. 
                 This Privacy Policy explains how we collect, use, process, disclose, and safeguard your information when you visit 
                 our website, contact us, or engage with our building and construction services.
               </p>
@@ -352,7 +352,7 @@ export default function PrivacyPolicyPage() {
                   Our website may contain links to third-party websites, such as accreditation bodies (Federation of Master Builders, 
                   TrustMark), social media platforms, or partner organisations. We are not responsible for the privacy practices, 
                   content, or security of these external sites. We encourage you to review the privacy policies of any third-party 
-                  sites you visit. This Privacy Policy applies only to information collected by Tillet & Saunders.
+                  sites you visit. This Privacy Policy applies only to information collected by Tillett & Saunders.
                 </p>
               </div>
 
@@ -400,7 +400,7 @@ export default function PrivacyPolicyPage() {
                     to exercise your data protection rights, please contact us:
                   </p>
                   <div className="bg-[var(--color-cream)] p-6 rounded-lg border border-[var(--color-off-white)]">
-                    <p className="font-semibold text-[var(--color-charcoal)] mb-3 text-lg">Tillet & Saunders</p>
+                    <p className="font-semibold text-[var(--color-charcoal)] mb-3 text-lg">Tillett & Saunders</p>
                     <div className="space-y-2">
                       <p><strong>Email:</strong> <a href={siteConfig.email.mailtoHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.email.address}</a></p>
                       <p><strong>Phone:</strong> <a href={siteConfig.phone.telHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.phone.display}</a></p>

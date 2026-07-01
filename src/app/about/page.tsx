@@ -41,7 +41,7 @@ const timeline = [
   {
     year: '1998',
     title: 'Foundation',
-    description: 'Robert Tillet and Michael Saunders establish the company with a shared vision of quality craftsmanship.',
+    description: 'Robert Tillett and Michael Saunders establish the company with a shared vision of quality craftsmanship.',
   },
   {
     year: '2005',
@@ -67,7 +67,7 @@ const timeline = [
 
 const team = [
   {
-    name: 'Robert Tillet',
+    name: 'Robert Tillett',
     role: 'Co-Founder & Director',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80',
     bio: 'With over 30 years in the building industry, Robert brings unmatched expertise and vision to every project.',
@@ -127,7 +127,7 @@ export default function AboutPage() {
                 A Legacy of <em>Craftsmanship</em>
               </h1>
               <p className="text-white/80 text-lg leading-relaxed about-hero-paragraph">
-                For over 25 years, Tillet & Saunders has been transforming homes and 
+                For over 25 years, Tillett & Saunders has been transforming homes and 
                 building lasting relationships with our clients across London and the South East.
               </p>
             </motion.div>
@@ -149,7 +149,7 @@ export default function AboutPage() {
               <h2 className="mb-6">Built on Trust, <em>Driven by Excellence</em></h2>
               <div className="divider" />
               <p className="text-[var(--color-gray-warm)] mb-6 leading-relaxed">
-                Tillet & Saunders was founded in 1998 by Robert Tillet and Michael Saunders, 
+                Tillett & Saunders was founded in 1998 by Robert Tillett and Michael Saunders, 
                 two craftsmen who shared a vision of delivering exceptional quality in every 
                 project they undertook. What started as a small family business has grown 
                 into one of the most respected building companies in the South East.

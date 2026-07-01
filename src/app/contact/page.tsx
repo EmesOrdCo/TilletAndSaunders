@@ -94,7 +94,7 @@ export default function ContactPage() {
       {/* Contact Section */}
       <section className="section bg-[var(--color-cream)]">
         <div className="container">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             {/* Contact Information */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

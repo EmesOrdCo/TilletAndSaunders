@@ -94,14 +94,13 @@ export default function ContactPage() {
       {/* Contact Section */}
       <section className="section bg-[var(--color-cream)]">
         <div className="container">
-          <div className="grid lg:grid-cols-5 gap-16 lg:gap-24">
+          <div className="max-w-3xl mx-auto">
             {/* Contact Information */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="lg:col-span-2"
             >
               <span className="section-label">Contact Information</span>
               <h2 className="mb-6">Get in <em>Touch</em></h2>
@@ -188,11 +187,11 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="lg:col-span-3"
+              className="mt-16"
             >
               <div className="bg-white shadow-lg contact-form-container p-8 md:p-10">
                 <h3 className="text-2xl mb-2">Request a Quote</h3>

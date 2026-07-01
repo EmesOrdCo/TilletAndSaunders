@@ -28,4 +28,13 @@ export const siteConfig = {
     locationId: process.env.NEXT_PUBLIC_GHL_LOCATION_ID ?? '',
     formId: process.env.NEXT_PUBLIC_GHL_FORM_ID ?? '',
   },
+  review: {
+    // Direct "write a review" link from your Google Business Profile.
+    googleReviewLink: process.env.NEXT_PUBLIC_GOOGLE_REVIEW_LINK ?? '',
+    // Ratings at or above this go straight to Google; below this see the feedback form.
+    positiveThreshold: 4,
+    // When true, low-raters ALSO get the option to post publicly (Google-policy-safe).
+    // When false, low-raters only see the private feedback form (classic funnel — higher risk).
+    allowPublicReviewForLowRatings: true,
+  },
 } as const;

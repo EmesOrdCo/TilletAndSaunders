@@ -1,7 +1,7 @@
 # Project Handoff: Tillett & Saunders Website + GHL CRM
 
-**Last Updated:** July 1, 2026  
-**Previous Chat:** [Contact page layout + GHL setup](c7949e68-0cdf-462d-b1ad-148e79cc8a43)
+**Last Updated:** July 1, 2026 (evening)  
+**Previous Chat:** [SMS phone system + review funnel setup](current-chat)
 
 ---
 
@@ -34,14 +34,22 @@ A Next.js website for **Tillett & Saunders**, a UK-based building company, with 
   - Reduced FAQ section padding for tighter vertical rhythm
 - [x] **Removed**: Accessibility widget (per user request)
 
-### GHL Setup (Partially Complete)
-- [x] Chat widget configured (needs `NEXT_PUBLIC_GHL_CHAT_WIDGET_ID` in env)
-- [x] Contact form webhook structure ready
-- [x] Workflow instructions prepared for:
-  - Missed Call Text Back (MCTB)
-  - Automated Lead Follow-Up
-  - 5-Star Review Funnel
-  - Form Auto-Responder
+### GHL Setup (Mostly Complete)
+- [x] Chat widget configured and live
+- [x] Contact form webhook working
+- [x] **GHL phone number purchased**: `+447375827675` (07375 827675)
+- [x] **A2P regulatory bundle submitted** — awaiting approval (24-72 hrs)
+- [x] **Pipeline created**: `Tillett&Saunders Website Enquiries` with stages: New Lead → Contacted → Quote Sent → Won
+- [x] **Lead Follow-Up workflow** (`Tillett&Saunders: Lead Follow-Up — 1hr SMS`) — published
+- [x] **Review Feedback workflow** (`Tillett&Saunders Review Feedback`) — published, handles star ratings + owner notification on negative
+- [x] **Review Request workflow** (`Tillett&Saunders: Review Request — Job Complete`) — published, sends reminders until `review-completed` tag added
+
+### Review Funnel (NEW)
+- [x] **`/review` page**: Star-rating funnel with Framer Motion animations
+- [x] **`/api/feedback` route**: Sends rating + feedback to GHL webhook, tags contact
+- [x] **Flow**: 4-5 stars → Google review redirect | 1-3 stars → private feedback form → owner notified
+- [x] **Compliance**: `allowPublicReviewForLowRatings: true` in config (Google-policy-safe)
+- [x] **GHL webhook**: `GHL_FEEDBACK_WEBHOOK_URL` configured in `.env.local` and Netlify
 
 ---
 
@@ -49,24 +57,22 @@ A Next.js website for **Tillett & Saunders**, a UK-based building company, with 
 
 See `TILLETT_SAUNDERS_ACTION_PLAN.md` for detailed step-by-step instructions.
 
-### Blocked on Client Info
-1. **GHL Phone Number**: Need client's business details for A2P registration
-2. **Business Address**: Currently placeholder in `site-config.ts`
-3. **Email Decision**: Currently using `emesordco@gmail.com` as placeholder
-4. **Logo**: Currently using text-based favicon; real logo needed
-5. **Google Business Profile**: Need client to verify ownership
+### Waiting / In Progress
+1. **A2P Approval**: Regulatory bundle submitted for `+447375827675` — expect 24-72 hours. SMS won't send until approved.
+2. **Google Business Profile**: Verification processing (up to 5 days). Once verified, grab review link.
+3. **Business Address**: Still placeholder in `site-config.ts` — update once confirmed with client.
+4. **Logo**: Still using text-based favicon; real logo needed.
 
 ### GHL Tasks Remaining
-- [ ] Buy GHL phone number and complete A2P registration
-- [ ] Enable MCTB workflow (after phone number)
-- [ ] Set Google review link in Review Request workflow
-- [ ] Create Smart Lists ("All Leads", "Cold Leads")
+- [ ] **MCTB workflow**: Build after A2P approved (trigger: Call Status → Missed)
+- [ ] **Google review link**: Add `NEXT_PUBLIC_GOOGLE_REVIEW_LINK` once GBP verified
+- [ ] Create Smart Lists ("All Leads", "Cold Leads", "Past Customers")
 - [ ] Set up email templates for marketing campaigns
-- [ ] Configure dedicated sending domain (DNS records)
+- [ ] Configure dedicated sending domain (DNS records for email deliverability)
 
 ### SEO Tasks Remaining
-- [ ] Submit sitemap to Google Search Console (URL: `https://tillettandsaunders.co.uk/sitemap.xml`)
-- [ ] Complete Google Business Profile setup
+- [ ] Submit sitemap to Google Search Console (`https://tillettandsaunders.co.uk/sitemap.xml`)
+- [ ] Complete Google Business Profile verification
 - [ ] Add real business address to structured data
 
 ---
@@ -75,12 +81,14 @@ See `TILLETT_SAUNDERS_ACTION_PLAN.md` for detailed step-by-step instructions.
 
 | File | Purpose |
 |------|---------|
-| `src/lib/site-config.ts` | Centralized config (phone, email, address, GHL IDs) |
+| `src/lib/site-config.ts` | Centralized config (phone, email, address, GHL IDs, review settings) |
 | `src/app/layout.tsx` | Root layout with metadata and LocalBusiness schema |
 | `src/app/contact/page.tsx` | Contact page with form, map, FAQs |
+| `src/app/review/page.tsx` | **NEW** — Star-rating review funnel page |
+| `src/app/api/feedback/route.ts` | **NEW** — Receives review feedback, sends to GHL |
 | `src/components/GhlContactForm.tsx` | GHL embedded form component |
 | `src/components/GhlChatWidget.tsx` | GHL chat widget component |
-| `.env.local` | Environment variables (GHL IDs, contact info) |
+| `.env.local` | Environment variables (GHL IDs, contact info, webhooks) |
 | `TILLETT_SAUNDERS_ACTION_PLAN.md` | Step-by-step manual tasks for GHL/DNS/GBP |
 | `CLIENT_INFO_REQUIRED.md` | Checklist of info needed from client |
 
@@ -91,12 +99,22 @@ See `TILLETT_SAUNDERS_ACTION_PLAN.md` for detailed step-by-step instructions.
 Required in `.env.local` and Netlify:
 
 ```env
-NEXT_PUBLIC_GHL_CHAT_WIDGET_ID=    # From GHL > Sites > Chat Widget
-NEXT_PUBLIC_GHL_LOCATION_ID=       # From GHL > Settings > Business Info
-NEXT_PUBLIC_GHL_FORM_ID=           # From GHL > Sites > Forms
-NEXT_PUBLIC_BUSINESS_PHONE_E164=   # E.164 format: +441234567890
-NEXT_PUBLIC_BUSINESS_PHONE_DISPLAY=# Display format: 01234 567 890
-NEXT_PUBLIC_BUSINESS_EMAIL=        # info@tillettandsaunders.co.uk (when set up)
+# Business contact (shown on website)
+NEXT_PUBLIC_BUSINESS_PHONE_E164=+447375827675
+NEXT_PUBLIC_BUSINESS_PHONE_DISPLAY=07375 827675
+NEXT_PUBLIC_BUSINESS_EMAIL=emesordco@gmail.com
+
+# GHL chat widget + form
+NEXT_PUBLIC_GHL_CHAT_WIDGET_ID=6a3feb2500578e71d13ce99b
+NEXT_PUBLIC_GHL_LOCATION_ID=P7da5f3xZlIwQRNgeMh0
+NEXT_PUBLIC_GHL_FORM_ID=9jMfYF4Hr7NgUxuUR172
+
+# Webhooks (server-side, not NEXT_PUBLIC_)
+GHL_CONTACT_WEBHOOK_URL=           # Contact form → GHL
+GHL_FEEDBACK_WEBHOOK_URL=          # Review funnel → GHL (configured)
+
+# Google review link (add once GBP verified)
+NEXT_PUBLIC_GOOGLE_REVIEW_LINK=    # e.g. https://g.page/r/.../review
 ```
 
 ---
@@ -112,10 +130,12 @@ NEXT_PUBLIC_BUSINESS_EMAIL=        # info@tillettandsaunders.co.uk (when set up)
 
 ## Notes for Next Chat
 
-1. **Printing Services**: User said to ignore for now; scope unclear
-2. **SMS Workflows**: All prepared but blocked until GHL phone number is purchased
-3. **Form Consent Text**: User asked about A2P consent checkbox — should read: "By checking this box, I consent to receive non-marketing text messages from Tillett & Saunders about your building enquiry and project updates."
-4. **Google Search Console**: User encountered "Invalid sitemap address" error — likely just needed to submit full URL with `https://`
+1. **A2P Approval**: Regulatory bundle submitted 1 Jul 2026 for phone number `+447375827675`. Check GHL > Settings > Phone Numbers for status. Once approved, SMS workflows will activate.
+2. **GBP Verification**: Google processing verification (up to 5 days from 1 Jul). Once verified, get review link and add to `NEXT_PUBLIC_GOOGLE_REVIEW_LINK`.
+3. **MCTB Workflow**: Not yet built. Create after A2P approved: Trigger = Call Status → Missed → Send SMS → Tag `missed-call` → Create opportunity.
+4. **DNS Issue**: Site went temporarily offline during this chat due to missing NS records at registry level. Fixed itself / user flushed DNS. Monitor if it happens again.
+5. **Printing Services**: User said to ignore for now; scope unclear.
+6. **Form Consent Text**: For A2P compliance, checkbox should read: "By checking this box, I consent to receive non-marketing text messages from Tillett & Saunders about your building enquiry and project updates."
 
 ---
 

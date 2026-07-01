@@ -95,7 +95,7 @@ export default function ContactPage() {
       <section className="section bg-[var(--color-cream)]">
         <div className="container">
           <div className="max-w-5xl mx-auto">
-            {/* Contact Information */}
+            {/* Contact Information Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -109,8 +109,18 @@ export default function ContactPage() {
                 We&apos;d love to hear about your project. Reach out using any of the methods 
                 below, or fill in the form and we&apos;ll get back to you within 24 hours.
               </p>
+            </motion.div>
 
-              <div className="space-y-6 mb-10 contact-info-items">
+            {/* Contact Info + Map Grid */}
+            <div className="grid md:grid-cols-2 gap-10 mb-10">
+              {/* Contact Details */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="space-y-6 contact-info-items"
+              >
                 <a
                   href={siteConfig.phone.telHref}
                   className="flex items-start gap-4 group"
@@ -167,10 +177,16 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              {/* Map placeholder */}
-              <div className="aspect-video bg-[var(--color-gray-light)] relative overflow-hidden contact-map">
+              {/* Map */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="aspect-video md:aspect-auto md:min-h-[300px] bg-[var(--color-gray-light)] relative overflow-hidden contact-map"
+              >
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.542156896357!2d-0.1276524!3d51.5013449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604c38c8cd1d9%3A0xb78f2474b9a45aa9!2sWestminster%2C%20London!5e0!3m2!1sen!2suk!4v1234567890"
                   width="100%"
@@ -182,8 +198,8 @@ export default function ContactPage() {
                   className="absolute inset-0"
                   title="Interactive map showing Tillett & Saunders location in Westminster, London"
                 ></iframe>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
             {/* Contact Form */}
             <motion.div

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, FileText, Building2, Users, Mail } from 'lucide-react';
+import { siteConfig } from '@/lib/site-config';
 
 export default function PrivacyPolicyPage() {
   return (
@@ -169,7 +170,7 @@ export default function PrivacyPolicyPage() {
                     We may share your information in the following circumstances:
                   </p>
                   <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li><strong>Service Providers and Contractors:</strong> We may share information with trusted third-party service providers who assist us in operating our business, including website hosting, email services, payment processing, accounting software, and cloud storage providers. These providers are contractually obligated to protect your information and use it only for the purposes we specify</li>
+                    <li><strong>Service Providers and Contractors:</strong> We may share information with trusted third-party service providers who assist us in operating our business, including website hosting, customer relationship management (CRM) and communications platforms (such as GoHighLevel), email services, payment processing, accounting software, and cloud storage providers. These providers are contractually obligated to protect your information and use it only for the purposes we specify</li>
                     <li><strong>Subcontractors and Suppliers:</strong> When necessary for project delivery, we may share relevant project information with subcontractors, suppliers, and tradespeople working on your project</li>
                     <li><strong>Professional Advisors:</strong> We may share information with our professional advisors, including accountants, solicitors, and insurance brokers, as necessary for business operations</li>
                     <li><strong>Regulatory Authorities:</strong> We may disclose information to regulatory bodies, local authorities, building control officers, and other government agencies as required by law or building regulations</li>
@@ -319,9 +320,33 @@ export default function PrivacyPolicyPage() {
                 </p>
               </div>
 
+              {/* Communications */}
+              <div>
+                <h2 className="text-2xl font-display mb-6">10. Communications and CRM</h2>
+                <div className="divider" />
+                <div className="space-y-4 text-[var(--color-gray-warm)] leading-relaxed">
+                  <p>
+                    We use GoHighLevel, a customer relationship management and communications platform, to manage enquiries
+                    from our website contact form, live chat, and phone calls. This may include:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Processing contact form submissions and storing your enquiry details</li>
+                    <li>Providing live chat functionality on our website</li>
+                    <li>Managing phone calls and, where you call us and we are unable to answer, sending an automated SMS to acknowledge your call and invite you to continue the conversation by text</li>
+                    <li>Sending follow-up messages related to your enquiry where you have contacted us or responded to our communications</li>
+                  </ul>
+                  <p>
+                    If you call us and we miss your call, we may send a single automated text message to the number you called
+                    from. You can reply to opt out of further messages. GoHighLevel processes this data on our behalf in
+                    accordance with their privacy policy:{' '}
+                    <a href="https://www.gohighlevel.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[var(--color-burgundy)] hover:underline">gohighlevel.com/privacy-policy</a>.
+                  </p>
+                </div>
+              </div>
+
               {/* Third-Party Links */}
               <div>
-                <h2 className="text-2xl font-display mb-6">10. Third-Party Links</h2>
+                <h2 className="text-2xl font-display mb-6">11. Third-Party Links</h2>
                 <div className="divider" />
                 <p className="text-[var(--color-gray-warm)] leading-relaxed">
                   Our website may contain links to third-party websites, such as accreditation bodies (Federation of Master Builders, 
@@ -333,7 +358,7 @@ export default function PrivacyPolicyPage() {
 
               {/* Children's Privacy */}
               <div>
-                <h2 className="text-2xl font-display mb-6">11. Children&apos;s Privacy</h2>
+                <h2 className="text-2xl font-display mb-6">12. Children&apos;s Privacy</h2>
                 <div className="divider" />
                 <p className="text-[var(--color-gray-warm)] leading-relaxed">
                   Our services are not directed to individuals under the age of 18. We do not knowingly collect personal 
@@ -345,7 +370,7 @@ export default function PrivacyPolicyPage() {
 
               {/* Changes to Policy */}
               <div>
-                <h2 className="text-2xl font-display mb-6">12. Changes to This Privacy Policy</h2>
+                <h2 className="text-2xl font-display mb-6">13. Changes to This Privacy Policy</h2>
                 <div className="divider" />
                 <p className="text-[var(--color-gray-warm)] leading-relaxed">
                   We may update this Privacy Policy from time to time to reflect changes in our practices, legal requirements, 
@@ -366,7 +391,7 @@ export default function PrivacyPolicyPage() {
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <Mail className="text-[var(--color-burgundy)]" size={24} />
-                  <h2 className="text-2xl font-display">13. Contact Us and Data Protection Officer</h2>
+                  <h2 className="text-2xl font-display">14. Contact Us and Data Protection Officer</h2>
                 </div>
                 <div className="divider" />
                 <div className="space-y-4 text-[var(--color-gray-warm)] leading-relaxed">
@@ -377,9 +402,9 @@ export default function PrivacyPolicyPage() {
                   <div className="bg-[var(--color-cream)] p-6 rounded-lg border border-[var(--color-off-white)]">
                     <p className="font-semibold text-[var(--color-charcoal)] mb-3 text-lg">Tillet & Saunders</p>
                     <div className="space-y-2">
-                      <p><strong>Email:</strong> <a href="mailto:info@tilletandsaunders.co.uk" className="text-[var(--color-burgundy)] hover:underline">info@tilletandsaunders.co.uk</a></p>
-                      <p><strong>Phone:</strong> <a href="tel:+441234567890" className="text-[var(--color-burgundy)] hover:underline">01234 567 890</a></p>
-                      <p><strong>Address:</strong> 123 Builder&apos;s Lane, London, SW1A 1AA</p>
+                      <p><strong>Email:</strong> <a href={siteConfig.email.mailtoHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.email.address}</a></p>
+                      <p><strong>Phone:</strong> <a href={siteConfig.phone.telHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.phone.display}</a></p>
+                      <p><strong>Address:</strong> {siteConfig.address.line1}, {siteConfig.address.line2}</p>
                     </div>
                   </div>
                   <p className="mt-4">

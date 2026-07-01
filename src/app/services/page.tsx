@@ -18,6 +18,7 @@ import {
   Paintbrush,
   Zap
 } from 'lucide-react';
+import { siteConfig } from '@/lib/site-config';
 
 const services = [
   {
@@ -106,7 +107,7 @@ const services = [
     title: 'Roofing',
     shortDesc: 'Complete roofing services from repairs to full replacements.',
     fullDesc: 'Protect your home with expert roofing services. Whether you need minor repairs, a complete re-roof, or a loft conversion, our experienced team ensures your roof is watertight, energy-efficient, and built to last.',
-    image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
     features: [
       'Slate & tile roofing',
       'Flat roof specialists',
@@ -355,9 +356,9 @@ export default function ServicesPage() {
                 Get a Free Quote
                 <ArrowRight size={18} />
               </Link>
-              <a href="tel:+441234567890" className="btn-secondary text-white border-white hover:bg-white hover:text-[var(--color-burgundy)] cta-button cta-phone-button">
+              <a href={siteConfig.phone.telHref} className="btn-secondary text-white border-white hover:bg-white hover:text-[var(--color-burgundy)] cta-button cta-phone-button">
                 <Phone size={18} />
-                01234 567 890
+                {siteConfig.phone.display}
               </a>
             </div>
           </motion.div>

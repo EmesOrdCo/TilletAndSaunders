@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Mail } from 'lucide-react';
+import { siteConfig } from '@/lib/site-config';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -49,13 +50,13 @@ export default function Header() {
         >
           <div className="container flex justify-between items-center text-sm">
             <div className="flex items-center gap-8">
-              <a href="tel:+441234567890" className="flex items-center gap-2 hover:text-[var(--color-gold)] transition-colors" aria-label="Call us at 01234 567 890">
+              <a href={siteConfig.phone.telHref} className="flex items-center gap-2 hover:text-[var(--color-gold)] transition-colors" aria-label={`Call us at ${siteConfig.phone.display}`}>
                 <Phone size={14} aria-hidden="true" />
-                <span>01234 567 890</span>
+                <span>{siteConfig.phone.display}</span>
               </a>
-              <a href="mailto:info@tilletandsaunders.co.uk" className="flex items-center gap-2 hover:text-[var(--color-gold)] transition-colors" aria-label="Email us at info@tilletandsaunders.co.uk">
+              <a href={siteConfig.email.mailtoHref} className="flex items-center gap-2 hover:text-[var(--color-gold)] transition-colors" aria-label={`Email us at ${siteConfig.email.address}`}>
                 <Mail size={14} aria-hidden="true" />
-                <span>info@tilletandsaunders.co.uk</span>
+                <span>{siteConfig.email.address}</span>
               </a>
             </div>
             <div className="text-[var(--color-gray-light)]">
@@ -225,18 +226,18 @@ export default function Header() {
                 <div className="mt-auto pb-10">
                   <div className="border-t border-[var(--color-off-white)] pt-8 mb-8 space-y-2">
                     <a
-                      href="tel:+441234567890"
+                      href={siteConfig.phone.telHref}
                       className="flex items-center gap-3 text-[var(--color-charcoal)] py-3 px-4 rounded hover:bg-[var(--color-off-white)] transition-colors min-h-[44px]"
                     >
                       <Phone size={18} className="text-[var(--color-burgundy)]" />
-                      <span>01234 567 890</span>
+                      <span>{siteConfig.phone.display}</span>
                     </a>
                     <a
-                      href="mailto:info@tilletandsaunders.co.uk"
+                      href={siteConfig.email.mailtoHref}
                       className="flex items-center gap-3 text-[var(--color-charcoal)] py-3 px-4 rounded hover:bg-[var(--color-off-white)] transition-colors min-h-[44px]"
                     >
                       <Mail size={18} className="text-[var(--color-burgundy)]" />
-                      <span>info@tilletandsaunders.co.uk</span>
+                      <span>{siteConfig.email.address}</span>
                     </a>
                   </div>
                   <Link href="/contact" className="btn-primary w-full text-center">

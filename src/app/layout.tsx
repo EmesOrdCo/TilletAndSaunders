@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
+import GhlChatWidget from "@/components/GhlChatWidget";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({
         <main id="main-content" tabIndex={-1}>{children}</main>
         <Footer />
         <AccessibilityWidget />
+        <GhlChatWidget />
       </body>
     </html>
   );

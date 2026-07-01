@@ -1,27 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, FormEvent } from 'react';
 import { 
   Phone, 
   Mail, 
   MapPin, 
   Clock, 
-  Send, 
-  CheckCircle,
   ArrowRight
 } from 'lucide-react';
-
-const services = [
-  'Kitchen Fitting',
-  'Extensions',
-  'Flooring',
-  'Plastering',
-  'Bathroom Renovations',
-  'Roofing',
-  'Full Renovation',
-  'Other',
-];
+import { siteConfig } from '@/lib/site-config';
+import GhlContactForm from '@/components/GhlContactForm';
 
 const faqs = [
   {
@@ -51,35 +39,6 @@ const faqs = [
 ];
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    budget: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
   return (
     <>
       {/* Hero Section */}
@@ -137,7 +96,7 @@ export default function ContactPage() {
 
               <div className="space-y-6 mb-10 contact-info-items">
                 <a
-                  href="tel:+441234567890"
+                  href={siteConfig.phone.telHref}
                   className="flex items-start gap-4 group"
                 >
                   <div className="w-12 h-12 bg-[var(--color-burgundy)] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--color-burgundy-dark)] transition-colors">
@@ -146,13 +105,13 @@ export default function ContactPage() {
                   <div>
                     <div className="font-semibold text-[var(--color-charcoal)] mb-1">Phone</div>
                     <div className="text-[var(--color-gray-warm)] group-hover:text-[var(--color-burgundy)] transition-colors">
-                      01234 567 890
+                      {siteConfig.phone.display}
                     </div>
                   </div>
                 </a>
 
                 <a
-                  href="mailto:info@tilletandsaunders.co.uk"
+                  href={siteConfig.email.mailtoHref}
                   className="flex items-start gap-4 group"
                 >
                   <div className="w-12 h-12 bg-[var(--color-burgundy)] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--color-burgundy-dark)] transition-colors">
@@ -161,7 +120,7 @@ export default function ContactPage() {
                   <div>
                     <div className="font-semibold text-[var(--color-charcoal)] mb-1">Email</div>
                     <div className="text-[var(--color-gray-warm)] group-hover:text-[var(--color-burgundy)] transition-colors">
-                      info@tilletandsaunders.co.uk
+                      {siteConfig.email.address}
                     </div>
                   </div>
                 </a>
@@ -173,8 +132,8 @@ export default function ContactPage() {
                   <div>
                     <div className="font-semibold text-[var(--color-charcoal)] mb-1">Address</div>
                     <div className="text-[var(--color-gray-warm)]">
-                      123 Builder&apos;s Lane<br />
-                      London, SW1A 1AA
+                      {siteConfig.address.line1}<br />
+                      {siteConfig.address.line2}
                     </div>
                   </div>
                 </div>
@@ -218,218 +177,12 @@ export default function ContactPage() {
               viewport={{ once: true }}
               className="lg:col-span-3"
             >
-              <div className="bg-white shadow-lg contact-form-container">
-                {isSubmitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-12"
-                    role="status"
-                    aria-live="polite"
-                    aria-atomic="true"
-                  >
-                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6" aria-hidden="true">
-                      <CheckCircle className="text-green-600" size={40} />
-                    </div>
-                    <h3 className="text-2xl mb-4">Thank You!</h3>
-                    <p className="text-[var(--color-gray-warm)] mb-8">
-                      Your message has been received. We&apos;ll be in touch within 24 hours 
-                      to discuss your project.
-                    </p>
-                    <button
-                      onClick={() => {
-                        setIsSubmitted(false);
-                        setFormData({
-                          name: '',
-                          email: '',
-                          phone: '',
-                          service: '',
-                          budget: '',
-                          message: '',
-                        });
-                      }}
-                      className="btn-primary"
-                    >
-                      Send Another Message
-                    </button>
-                  </motion.div>
-                ) : (
-                  <>
-                    <h3 className="text-2xl mb-2">Request a Quote</h3>
-                    <p className="text-[var(--color-gray-warm)] mb-8">
-                      Fill in the form below and we&apos;ll get back to you as soon as possible.
-                    </p>
-
-                    <form onSubmit={handleSubmit} className="contact-form" noValidate aria-label="Contact form">
-                      <div role="status" aria-live="polite" aria-atomic="true" className="sr-only" id="form-status"></div>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <label
-                            htmlFor="name"
-                            className="block text-sm font-medium text-[var(--color-charcoal)] mb-2"
-                          >
-                            Full Name *
-                          </label>
-                          <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                            aria-required="true"
-                            aria-describedby="name-error"
-                            className="w-full px-4 py-3 border border-[var(--color-gray-light)] bg-[var(--color-cream)] focus:border-[var(--color-burgundy)] transition-colors"
-                            placeholder="John Smith"
-                          />
-                          <span id="name-error" className="sr-only" role="alert"></span>
-                        </div>
-                        <div>
-                          <label
-                            htmlFor="email"
-                            className="block text-sm font-medium text-[var(--color-charcoal)] mb-2"
-                          >
-                            Email Address *
-                          </label>
-                          <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            aria-required="true"
-                            aria-describedby="email-error"
-                            className="w-full px-4 py-3 border border-[var(--color-gray-light)] bg-[var(--color-cream)] focus:border-[var(--color-burgundy)] transition-colors"
-                            placeholder="john@example.com"
-                          />
-                          <span id="email-error" className="sr-only" role="alert"></span>
-                        </div>
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <label
-                            htmlFor="phone"
-                            className="block text-sm font-medium text-[var(--color-charcoal)] mb-2"
-                          >
-                            Phone Number
-                          </label>
-                          <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            className="w-full px-4 py-3 border border-[var(--color-gray-light)] bg-[var(--color-cream)] focus:border-[var(--color-burgundy)] transition-colors"
-                            placeholder="07123 456 789"
-                          />
-                        </div>
-                        <div>
-                          <label
-                            htmlFor="service"
-                            className="block text-sm font-medium text-[var(--color-charcoal)] mb-2"
-                          >
-                            Service Required *
-                          </label>
-                          <select
-                            id="service"
-                            name="service"
-                            value={formData.service}
-                            onChange={handleChange}
-                            required
-                            aria-required="true"
-                            aria-describedby="service-error"
-                            className="w-full px-4 py-3 border border-[var(--color-gray-light)] bg-[var(--color-cream)] focus:border-[var(--color-burgundy)] transition-colors"
-                          >
-                            <option value="">Select a service</option>
-                            {services.map((service) => (
-                              <option key={service} value={service}>
-                                {service}
-                              </option>
-                            ))}
-                          </select>
-                          <span id="service-error" className="sr-only" role="alert"></span>
-                        </div>
-                      </div>
-
-                      <div>
-                        <label
-                          htmlFor="budget"
-                          className="block text-sm font-medium text-[var(--color-charcoal)] mb-2"
-                        >
-                          Approximate Budget
-                        </label>
-                        <select
-                          id="budget"
-                          name="budget"
-                          value={formData.budget}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 border border-[var(--color-gray-light)] bg-[var(--color-cream)] focus:border-[var(--color-burgundy)] transition-colors"
-                        >
-                          <option value="">Select a budget range</option>
-                          <option value="Under £10,000">Under £10,000</option>
-                          <option value="£10,000 - £25,000">£10,000 - £25,000</option>
-                          <option value="£25,000 - £50,000">£25,000 - £50,000</option>
-                          <option value="£50,000 - £100,000">£50,000 - £100,000</option>
-                          <option value="Over £100,000">Over £100,000</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label
-                          htmlFor="message"
-                          className="block text-sm font-medium text-[var(--color-charcoal)] mb-2"
-                        >
-                          Project Details *
-                        </label>
-                        <textarea
-                          id="message"
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          required
-                          rows={5}
-                          className="w-full px-4 py-3 border border-[var(--color-gray-light)] bg-[var(--color-cream)] focus:border-[var(--color-burgundy)] transition-colors resize-none"
-                          placeholder="Please describe your project, including any specific requirements or timelines..."
-                        ></textarea>
-                      </div>
-
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="btn-primary w-full disabled:opacity-70 disabled:cursor-not-allowed"
-                      >
-                        {isSubmitting ? (
-                          <span className="flex items-center justify-center gap-2">
-                            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                              <circle
-                                className="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                                fill="none"
-                              />
-                              <path
-                                className="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                              />
-                            </svg>
-                            Sending...
-                          </span>
-                        ) : (
-                          <>
-                            Send Message
-                            <Send size={18} />
-                          </>
-                        )}
-                      </button>
-                    </form>
-                  </>
-                )}
+              <div className="bg-white shadow-lg contact-form-container p-8 md:p-10">
+                <h3 className="text-2xl mb-2">Request a Quote</h3>
+                <p className="text-[var(--color-gray-warm)] mb-8">
+                  Fill in the form below and we&apos;ll get back to you as soon as possible.
+                </p>
+                <GhlContactForm />
               </div>
             </motion.div>
           </div>
@@ -488,9 +241,9 @@ export default function ContactPage() {
               Give us a call and speak with a member of our team. We&apos;re here to answer 
               your questions and discuss your project requirements.
             </p>
-            <a href="tel:+441234567890" className="btn-primary bg-white text-[var(--color-burgundy)] hover:bg-[var(--color-off-white)] contact-cta-button">
+            <a href={siteConfig.phone.telHref} className="btn-primary bg-white text-[var(--color-burgundy)] hover:bg-[var(--color-off-white)] contact-cta-button">
               <Phone size={18} />
-              Call 01234 567 890
+              Call {siteConfig.phone.display}
               <ArrowRight size={18} />
             </a>
           </motion.div>

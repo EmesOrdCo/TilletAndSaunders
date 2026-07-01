@@ -2,8 +2,8 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
-import { ArrowRight, X, ChevronLeft, ChevronRight, MapPin, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, X, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 
 const categories = [
   'All',
@@ -135,52 +135,63 @@ const projects = [
       'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=1200&q=80',
     ],
   },
-  {
-    id: 9,
-    title: 'Guest Bathroom Suite',
-    location: 'Kensington, London',
-    category: 'Bathrooms',
-    description: 'An elegant guest bathroom featuring geometric tiles, brass fixtures, and a floating vanity.',
-    scope: 'Complete bathroom fit-out including new plumbing and electrical installation.',
-    duration: '3 weeks',
-    image: 'https://images.unsplash.com/photo-1600566752734-c9cd8e4b3daf?w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1600566752734-c9cd8e4b3daf?w=1200&q=80',
-      'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80',
-      'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&q=80',
-    ],
-  },
 ];
+
+type Project = (typeof projects)[number];
+
+function ProjectCard({
+  project,
+  onOpen,
+}: {
+  project: Project;
+  onOpen: (project: Project) => void;
+}) {
+  return (
+    <article
+      onClick={() => onOpen(project)}
+      onKeyDown={(e) => e.key === 'Enter' && onOpen(project)}
+      tabIndex={0}
+      role="button"
+      aria-label={`View ${project.title}`}
+      className="projects-card group"
+    >
+      <div className="projects-card-image">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="img-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="projects-card-overlay" />
+        <span className="projects-card-category">{project.category}</span>
+        <div className="projects-card-content">
+          <h2 className="projects-card-title">{project.title}</h2>
+          <div className="projects-card-meta">
+            <span className="projects-card-location">
+              <MapPin size={14} aria-hidden="true" />
+              {project.location}
+            </span>
+            <span className="projects-card-duration">{project.duration}</span>
+          </div>
+        </div>
+        <div className="projects-card-cta" aria-hidden="true">
+          <span>View project</span>
+          <ArrowRight size={16} />
+        </div>
+      </div>
+    </article>
+  );
+}
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    if (isDropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isDropdownOpen]);
 
   const filteredProjects = selectedCategory === 'All'
     ? projects
     : projects.filter(p => p.category === selectedCategory);
 
-  const openProject = (project: typeof projects[0]) => {
+  const openProject = (project: Project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
   };
@@ -219,12 +230,7 @@ export default function ProjectsPage() {
         
         <div className="absolute bottom-0 left-0 right-0 projects-hero-wrapper">
           <div className="container pb-12 md:pb-16 projects-hero-container">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-2xl projects-hero-content"
-            >
+            <div className="max-w-2xl projects-hero-content projects-hero-animate">
               <span className="inline-block text-[var(--color-gold)] text-sm font-semibold tracking-[0.3em] uppercase mb-4">
                 Our Portfolio
               </span>
@@ -235,114 +241,70 @@ export default function ProjectsPage() {
                 Explore our showcase of completed projects, each representing our commitment 
                 to exceptional quality and client satisfaction.
               </p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Filter Section */}
-      <section className="bg-white py-8 border-b border-[var(--color-off-white)] project-filters">
+      {/* Projects Showcase */}
+      <section className="projects-showcase section bg-white">
         <div className="container">
-          {/* Mobile Dropdown */}
-          <div className="md:hidden" ref={dropdownRef}>
-            <button
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="project-filter-dropdown-button"
-              aria-expanded={isDropdownOpen}
-              aria-haspopup="listbox"
+          <div className="projects-showcase-header">
+            <div className="projects-showcase-intro">
+              <span className="projects-showcase-label">Browse Our Work</span>
+              <div className="projects-showcase-divider" aria-hidden="true" />
+              <p className="projects-showcase-count">
+                <span className="projects-showcase-count-number">{filteredProjects.length}</span>
+                <span className="projects-showcase-count-text">
+                  {filteredProjects.length === 1 ? 'Project' : 'Projects'}
+                  {selectedCategory !== 'All' && (
+                    <>
+                      {' '}in <em>{selectedCategory}</em>
+                    </>
+                  )}
+                </span>
+              </p>
+            </div>
+
+            <div
+              className="projects-filter-scroll"
+              role="tablist"
+              aria-label="Filter projects by category"
             >
-              <span>{selectedCategory}</span>
-              <ChevronDown 
-                size={20} 
-                className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
-            <AnimatePresence>
-              {isDropdownOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className="mt-2 bg-white border-2 border-[var(--color-burgundy)] shadow-lg"
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  role="tab"
+                  aria-selected={selectedCategory === category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`projects-filter-tab ${
+                    selectedCategory === category ? 'projects-filter-tab--active' : ''
+                  }`}
                 >
-                  {categories.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => {
-                        setSelectedCategory(category);
-                        setIsDropdownOpen(false);
-                      }}
-                      className={`w-full text-left px-4 py-3 project-filter-dropdown-item ${
-                        selectedCategory === category ? 'project-filter-dropdown-active' : ''
-                      }`}
-                    >
-                      {category}
-                    </button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Desktop Horizontal Buttons */}
-          <div className="hidden md:flex project-filters-container">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`project-filter-button ${selectedCategory === category ? 'project-filter-active' : ''}`}
-              >
-                {category}
-              </button>
+          <div key={selectedCategory} className="projects-grid projects-grid--animate">
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} onOpen={openProject} />
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Projects Grid */}
-      <section className="section bg-[var(--color-cream)]">
-        <div className="container">
-          <motion.div
-            layout
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  onClick={() => openProject(project)}
-                  className="group cursor-pointer"
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden mb-4">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="img-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                      <span className="text-[var(--color-gold)] text-sm uppercase tracking-wider">
-                        {project.category}
-                      </span>
-                    </div>
-                  </div>
-                  <h2 className="text-xl mb-2 group-hover:text-[var(--color-burgundy)] transition-colors">
-                    {project.title}
-                  </h2>
-                  <div className="flex items-center gap-2 text-[var(--color-gray-warm)] text-sm">
-                    <MapPin size={14} />
-                    <span>{project.location}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          {filteredProjects.length === 0 && (
+            <div className="projects-empty">
+              <p>No projects found in this category.</p>
+              <button
+                type="button"
+                onClick={() => setSelectedCategory('All')}
+                className="projects-empty-reset"
+              >
+                View all projects
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -457,13 +419,7 @@ export default function ProjectsPage() {
       {/* CTA Section */}
       <section className="section bg-[var(--color-burgundy)] projects-cta-section">
         <div className="container projects-cta-container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto projects-cta-content"
-          >
+          <div className="text-center max-w-3xl mx-auto projects-cta-content">
             <h2 className="text-white mb-6 projects-cta-title">
               Inspired by What You <em>See</em>?
             </h2>
@@ -475,7 +431,7 @@ export default function ProjectsPage() {
               Get in Touch
               <ArrowRight size={18} />
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
     </>

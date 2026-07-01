@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Cookie, Settings, Shield, Info, BarChart3, Lock } from 'lucide-react';
+import { siteConfig } from '@/lib/site-config';
 
 export default function CookiePolicyPage() {
   return (
@@ -162,6 +163,7 @@ export default function CookiePolicyPage() {
                     </p>
                     <p className="mb-2"><strong>Purpose:</strong></p>
                     <ul className="list-disc list-inside space-y-1 ml-4 mb-3">
+                      <li><strong>GoHighLevel Chat Widget:</strong> Enables live chat on our website. GoHighLevel may set cookies to maintain chat sessions. Privacy policy: <a href="https://www.gohighlevel.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[var(--color-burgundy)] hover:underline">gohighlevel.com/privacy-policy</a></li>
                       <li>Remembering your preferences (language, region, font size)</li>
                       <li>Storing information you have entered (e.g., form data) to avoid re-entry</li>
                       <li>Providing enhanced features and personalisation</li>
@@ -210,6 +212,7 @@ export default function CookiePolicyPage() {
                   </p>
                   <p><strong>Examples of Third-Party Services (if used):</strong></p>
                   <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>GoHighLevel:</strong> Our live chat widget is provided by GoHighLevel (LeadConnector). It may set cookies to enable chat functionality and session management. Privacy policy: <a href="https://www.gohighlevel.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[var(--color-burgundy)] hover:underline">https://www.gohighlevel.com/privacy-policy</a></li>
                     <li><strong>Google Analytics:</strong> If we use Google Analytics, it uses cookies to collect information about how visitors use our website. This information is used to compile reports and help us improve the site. Google&apos;s privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[var(--color-burgundy)] hover:underline">https://policies.google.com/privacy</a></li>
                     <li><strong>Social Media Platforms:</strong> If we embed social media content (e.g., Facebook, Instagram, LinkedIn), these platforms may set cookies. Their privacy policies govern the use of these cookies</li>
                     <li><strong>Content Delivery Networks:</strong> We may use content delivery networks that set cookies to optimise content delivery</li>
@@ -374,9 +377,9 @@ export default function CookiePolicyPage() {
                   <div className="bg-[var(--color-cream)] p-6 rounded-lg border border-[var(--color-off-white)]">
                     <p className="font-semibold text-[var(--color-charcoal)] mb-3 text-lg">Tillet & Saunders</p>
                     <div className="space-y-2">
-                      <p><strong>Email:</strong> <a href="mailto:info@tilletandsaunders.co.uk" className="text-[var(--color-burgundy)] hover:underline">info@tilletandsaunders.co.uk</a></p>
-                      <p><strong>Phone:</strong> <a href="tel:+441234567890" className="text-[var(--color-burgundy)] hover:underline">01234 567 890</a></p>
-                      <p><strong>Address:</strong> 123 Builder&apos;s Lane, London, SW1A 1AA</p>
+                      <p><strong>Email:</strong> <a href={siteConfig.email.mailtoHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.email.address}</a></p>
+                      <p><strong>Phone:</strong> <a href={siteConfig.phone.telHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.phone.display}</a></p>
+                      <p><strong>Address:</strong> {siteConfig.address.line1}, {siteConfig.address.line2}</p>
                     </div>
                   </div>
                   <p className="mt-4">

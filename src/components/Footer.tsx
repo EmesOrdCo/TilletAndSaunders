@@ -14,6 +14,7 @@ import {
   Shield,
   CheckCircle
 } from 'lucide-react';
+import { siteConfig } from '@/lib/site-config';
 
 const services = [
   'Kitchen Fitting',
@@ -57,21 +58,21 @@ export default function Footer() {
             <div className="flex gap-4 mb-6">
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--color-burgundy)] transition-colors duration-300"
+                className="footer-social-link w-10 h-10 rounded-full bg-white/10 hover:bg-[var(--color-burgundy)] transition-colors duration-300"
                 aria-label="Facebook"
               >
                 <Facebook size={18} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--color-burgundy)] transition-colors duration-300"
+                className="footer-social-link w-10 h-10 rounded-full bg-white/10 hover:bg-[var(--color-burgundy)] transition-colors duration-300"
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--color-burgundy)] transition-colors duration-300"
+                className="footer-social-link w-10 h-10 rounded-full bg-white/10 hover:bg-[var(--color-burgundy)] transition-colors duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={18} />
@@ -135,27 +136,27 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:+441234567890"
+                  href={siteConfig.phone.telHref}
                   className="flex items-start gap-3 text-[var(--color-gray-light)] hover:text-white transition-colors duration-300"
                 >
                   <Phone size={18} className="text-[var(--color-gold)] mt-1 flex-shrink-0" />
-                  <span>01234 567 890</span>
+                  <span>{siteConfig.phone.display}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@tilletandsaunders.co.uk"
+                  href={siteConfig.email.mailtoHref}
                   className="flex items-start gap-3 text-[var(--color-gray-light)] hover:text-white transition-colors duration-300"
                 >
                   <Mail size={18} className="text-[var(--color-gold)] mt-1 flex-shrink-0" />
-                  <span>info@tilletandsaunders.co.uk</span>
+                  <span>{siteConfig.email.address}</span>
                 </a>
               </li>
               <li className="flex items-start gap-3 text-[var(--color-gray-light)]">
                 <MapPin size={18} className="text-[var(--color-gold)] mt-1 flex-shrink-0" />
                 <span>
-                  123 Builder&apos;s Lane<br />
-                  London, SW1A 1AA
+                  {siteConfig.address.line1}<br />
+                  {siteConfig.address.line2}
                 </span>
               </li>
               <li className="flex items-start gap-3 text-[var(--color-gray-light)]">

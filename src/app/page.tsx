@@ -19,6 +19,7 @@ import {
   Users,
   Calendar
 } from 'lucide-react';
+import { siteConfig } from '@/lib/site-config';
 
 const services = [
   {
@@ -55,7 +56,7 @@ const services = [
     icon: Hammer,
     title: 'Roofing',
     description: 'Complete roofing services from repairs to full replacements.',
-    image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
   },
 ];
 
@@ -497,9 +498,9 @@ export default function HomePage() {
                 Get Your Free Quote
                 <ArrowRight size={18} />
               </Link>
-              <a href="tel:+441234567890" className="btn-secondary cta-phone-button">
+              <a href={siteConfig.phone.telHref} className="btn-secondary cta-phone-button">
                 <Phone size={18} />
-                01234 567 890
+                {siteConfig.phone.display}
               </a>
             </div>
           </motion.div>

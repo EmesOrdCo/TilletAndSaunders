@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { FileText, Scale, AlertCircle, CheckCircle, Hammer, Receipt, Shield, Gavel } from 'lucide-react';
+import { siteConfig } from '@/lib/site-config';
 
 export default function TermsOfServicePage() {
   return (
@@ -421,8 +422,8 @@ export default function TermsOfServicePage() {
                   <div className="bg-[var(--color-cream)] p-6 rounded-lg border border-[var(--color-off-white)]">
                     <p className="font-semibold text-[var(--color-charcoal)] mb-3 text-lg">Tillet & Saunders</p>
                     <div className="space-y-2">
-                      <p><strong>Email:</strong> <a href="mailto:info@tilletandsaunders.co.uk" className="text-[var(--color-burgundy)] hover:underline">info@tilletandsaunders.co.uk</a></p>
-                      <p><strong>Phone:</strong> <a href="tel:+441234567890" className="text-[var(--color-burgundy)] hover:underline">01234 567 890</a></p>
+                      <p><strong>Email:</strong> <a href={siteConfig.email.mailtoHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.email.address}</a></p>
+                      <p><strong>Phone:</strong> <a href={siteConfig.phone.telHref} className="text-[var(--color-burgundy)] hover:underline">{siteConfig.phone.display}</a></p>
                       <p><strong>Address:</strong> 123 Builder&apos;s Lane, London, SW1A 1AA</p>
                       <p><strong>Business Hours:</strong> Monday to Friday: 8:00 - 18:00, Saturday: 9:00 - 14:00</p>
                     </div>

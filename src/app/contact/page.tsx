@@ -94,7 +94,7 @@ export default function ContactPage() {
       {/* Contact Section */}
       <section className="section bg-[var(--color-cream)]">
         <div className="container">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-5xl mx-auto contact-info-block">
             {/* Contact Information Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -112,18 +112,18 @@ export default function ContactPage() {
             </motion.div>
 
             {/* Contact Info + Map Grid */}
-            <div className="grid md:grid-cols-2 gap-10 mb-10">
+            <div className="grid md:grid-cols-2 gap-10 mb-10 items-center">
               {/* Contact Details */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="space-y-6 contact-info-items"
+                className="flex flex-col gap-6 contact-info-items"
               >
                 <a
                   href={siteConfig.phone.telHref}
-                  className="flex items-start gap-4 group"
+                  className="!flex items-start gap-4 group"
                 >
                   <div className="w-12 h-12 bg-[var(--color-burgundy)] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--color-burgundy-dark)] transition-colors">
                     <Phone className="text-white" size={20} />
@@ -138,7 +138,7 @@ export default function ContactPage() {
 
                 <a
                   href={siteConfig.email.mailtoHref}
-                  className="flex items-start gap-4 group"
+                  className="!flex items-start gap-4 group"
                 >
                   <div className="w-12 h-12 bg-[var(--color-burgundy)] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--color-burgundy-dark)] transition-colors">
                     <Mail className="text-white" size={20} />
@@ -185,7 +185,7 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="aspect-video md:aspect-auto md:min-h-[300px] bg-[var(--color-gray-light)] relative overflow-hidden contact-map"
+                className="w-full min-h-[280px] md:min-h-[380px] bg-[var(--color-gray-light)] relative overflow-hidden contact-map"
               >
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.542156896357!2d-0.1276524!3d51.5013449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604c38c8cd1d9%3A0xb78f2474b9a45aa9!2sWestminster%2C%20London!5e0!3m2!1sen!2suk!4v1234567890"
@@ -200,29 +200,34 @@ export default function ContactPage() {
                 ></iframe>
               </motion.div>
             </div>
+          </div>
 
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="mt-16"
-            >
-              <div className="bg-white shadow-lg contact-form-container p-8 md:p-10">
-                <h3 className="text-2xl mb-2">Request a Quote</h3>
-                <p className="text-[var(--color-gray-warm)] mb-8">
-                  Fill in the form below and we&apos;ll get back to you as soon as possible.
-                </p>
+          {/* Spacer */}
+          <div className="h-20 md:h-28" aria-hidden="true" />
+
+          {/* Contact Form — full container width so GHL image + fields stay side by side */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="contact-form-section w-full"
+          >
+            <div className="bg-white shadow-lg contact-form-container p-8 md:p-10">
+              <h3 className="text-2xl mb-2 text-center">Request a Quote</h3>
+              <p className="text-[var(--color-gray-warm)] mb-10 text-center">
+                Fill in the form below and we&apos;ll get back to you as soon as possible.
+              </p>
+              <div className="pt-12">
                 <GhlContactForm />
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="section bg-white">
+      <section className="section bg-white !pt-12 md:!pt-16">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
